@@ -1,0 +1,1354 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07152b">
+<meta name="description" content="VESPERA V7.1 — Crystal Liquid Glass: V4-inspired design with V6.2 features.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>VESPERA V7.1 — Crystal Liquid Glass</title>
+<style>
+:root{--bg:#070a12;--text:#f4f6fb;--muted:#9aa6bb;--line:rgba(230,240,255,.16);--glass:rgba(255,255,255,.045);--glass-strong:rgba(255,255,255,.075);--accent:#75b8ff;--accent-soft:#b5d9ff;--accent-rgb:117,184,255;--good:#83d9b2;--danger:#ff879b;--shadow:0 22px 70px rgba(0,0,0,.3);color-scheme:dark}
+:root[data-theme="pink"]{--accent:#f28bc9;--accent-soft:#ffc5e7;--accent-rgb:242,139,201}
+:root[data-theme="violet"]{--accent:#b49aff;--accent-soft:#d8caff;--accent-rgb:180,154,255}
+:root[data-theme="cyan"]{--accent:#72e2ec;--accent-soft:#b9f7fb;--accent-rgb:114,226,236}
+:root[data-theme="emerald"]{--accent:#75d9ad;--accent-soft:#b5f3d5;--accent-rgb:117,217,173}
+:root[data-theme="amber"]{--accent:#f2c777;--accent-soft:#ffe4a8;--accent-rgb:242,199,119}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:radial-gradient(ellipse at 15% 6%,rgba(var(--accent-rgb),.12),transparent 34rem),radial-gradient(ellipse at 88% 42%,rgba(110,132,190,.08),transparent 30rem),radial-gradient(ellipse at 48% 100%,rgba(var(--accent-rgb),.065),transparent 32rem),#070a12;-webkit-font-smoothing:antialiased}
+body:before,body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}body:before{background:radial-gradient(circle at 78% 14%,rgba(var(--accent-rgb),.13),transparent 17rem),radial-gradient(circle at 12% 82%,rgba(255,255,255,.035),transparent 20rem);filter:blur(18px)}body:after{opacity:.12;background-image:radial-gradient(rgba(255,255,255,.32) .6px,transparent .6px);background-size:23px 23px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px} [hidden],.hidden{display:none!important}
+.app-shell{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:26px 0 140px;position:relative;z-index:1}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative;margin-bottom:34px;padding:13px 16px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.022));backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.17),var(--shadow)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand img{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.22))}.brand-copy strong{display:block;font-size:15px;letter-spacing:2.7px}.brand-copy small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.8px;margin-top:4px}.top-actions{display:flex;align-items:center;gap:8px}.icon-btn,.soft-btn,.chip-btn,.primary-btn,.danger-btn{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.045);transition:background .2s,border-color .2s,transform .2s,box-shadow .2s}.icon-btn{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;font-size:17px;position:relative}.icon-btn:hover,.soft-btn:hover,.chip-btn:hover{border-color:rgba(var(--accent-rgb),.45);background:rgba(var(--accent-rgb),.1);transform:translateY(-1px)}.notification-count[hidden]{display:none!important}.notification-count{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:var(--accent);color:#08101c;font-size:10px;font-weight:900;display:grid;place-items:center;border:2px solid #0a0e18}
+.notification-wrap{position:relative}.notification-panel{position:absolute;z-index:30;top:calc(100% + 13px);right:0;width:min(370px,calc(100vw - 30px));padding:14px;border:1px solid rgba(255,255,255,.19);border-radius:21px;background:rgba(14,19,31,.78);backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);box-shadow:0 25px 75px rgba(0,0,0,.48)}.notification-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.notification-head h3{margin:0;font-size:14px}.notification-actions{display:flex;gap:6px;flex-wrap:wrap}.notification-actions button{font-size:10px;padding:6px 8px;border-radius:9px}.notification-list{display:grid;gap:7px;max-height:360px;overflow:auto}.notification-item{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:rgba(255,255,255,.035)}.notification-item.read{opacity:.58}.notification-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:5px;flex:0 0 auto;box-shadow:0 0 12px rgba(var(--accent-rgb),.4)}.notification-dot.success{background:#83d9b2}.notification-dot.reminder{background:#f2c777}.notification-dot.activity{background:#72e2ec}.notification-copy{min-width:0;flex:1}.notification-copy strong{font-size:11px;display:block}.notification-copy p{font-size:10px;color:#c4ccda;line-height:1.6;margin:3px 0}.notification-copy small{font-size:9px;color:var(--muted)}.notification-read{border:0;background:transparent;color:var(--accent-soft);font-size:14px;padding:3px}.notification-empty{padding:16px}
+main{min-width:0}.page{display:none;animation:pageIn .28s ease}.page.active{display:block}@keyframes pageIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.welcome-row{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:4px 2px 20px}.eyebrow{font-size:9px;letter-spacing:2.1px;color:var(--accent-soft);font-weight:800}.welcome-row h1{font-size:clamp(23px,4vw,34px);letter-spacing:-.7px;margin:7px 0 5px}.welcome-row p{font-size:11px;color:var(--muted);margin:0;line-height:1.8}.date-label{font-size:10px;color:var(--muted);margin-bottom:8px}.page-title{margin:0 2px 22px}.page-title h2{font-size:25px;margin:7px 0}.page-title p{font-size:11px;line-height:1.8;color:var(--muted);margin:0}
+.panel,.stat-card,.player-card{border:1px solid rgba(232,242,255,.14);background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025) 58%,rgba(255,255,255,.045));backdrop-filter:blur(30px) saturate(175%);-webkit-backdrop-filter:blur(30px) saturate(175%);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(255,255,255,.025),0 18px 55px rgba(0,0,0,.22);border-radius:22px}.panel{padding:18px;margin-bottom:15px}.player-card{padding:22px;margin-bottom:15px;position:relative;overflow:hidden}.player-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.16),transparent 70%);top:-155px;left:-75px;pointer-events:none}.player-main{display:flex;align-items:center;gap:16px;position:relative;z-index:1}.rank-orb{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;border:1px solid rgba(var(--accent-rgb),.48);background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.24),rgba(var(--accent-rgb),.16) 42%,rgba(255,255,255,.025) 75%);box-shadow:inset 0 2px 8px rgba(255,255,255,.18),0 0 35px rgba(var(--accent-rgb),.13);color:var(--accent-soft);font-size:27px;font-weight:900}.rank-info{min-width:0;flex:1}.rank-info small{font-size:9px;color:var(--muted);letter-spacing:1.5px}.rank-info h2{font-size:17px;margin:5px 0}.rank-info p{font-size:10px;color:var(--muted);margin:0;line-height:1.7}.level-pill{border:1px solid var(--line);border-radius:15px;padding:9px 13px;text-align:center;background:rgba(255,255,255,.035);min-width:64px}.level-pill small{display:block;font-size:8px;color:var(--muted);letter-spacing:1.2px}.level-pill strong{display:block;font-size:21px;margin-top:2px}.progress-line{height:7px;border-radius:99px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:17px}.progress-line span{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-soft));box-shadow:0 0 16px rgba(var(--accent-rgb),.35);transition:width .35s}.progress-meta{display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:var(--muted);font-size:9px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-bottom:24px}.stat-card{padding:15px 16px;min-height:100px}.stat-label{font-size:10px;color:var(--muted)}.stat-value{font-size:25px;font-weight:850;margin:8px 0 2px;letter-spacing:-.7px}.stat-sub{font-size:9px;color:var(--muted)}.accent{color:var(--accent-soft)}.home-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);gap:15px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:5px 1px 12px}.section-head h3{font-size:14px;margin:0}.section-head p{font-size:10px;color:var(--muted);margin:5px 0 0;line-height:1.7}.section-code{font-size:8px;color:var(--accent-soft);letter-spacing:1.6px;margin-bottom:5px}.task-list{display:grid;gap:8px}.task-row{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025);border-radius:14px;min-width:0}.task-check{width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto}.task-copy{min-width:0;flex:1}.task-copy strong{display:block;font-size:11px;overflow-wrap:anywhere}.task-copy small{display:block;font-size:9px;color:var(--muted);margin-top:4px;line-height:1.6}.task-row.done .task-copy strong{text-decoration:line-through;color:var(--muted)}.pill{font-size:9px;padding:5px 8px;border-radius:99px;background:rgba(var(--accent-rgb),.11);color:var(--accent-soft);white-space:nowrap}.assistant-bubble{font-size:11px;line-height:1.9;padding:14px;border:1px solid rgba(var(--accent-rgb),.18);background:rgba(var(--accent-rgb),.055);border-radius:16px;color:#dce6f7}.home-side{display:grid;gap:15px;align-content:start}.activity-mini{display:flex;align-items:center;justify-content:space-between;gap:12px}.activity-mini strong{font-size:25px;color:var(--accent-soft)}.activity-mini span{font-size:10px;color:var(--muted)}
+.grid{display:grid;gap:12px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.field{display:grid;gap:6px;min-width:0}.field label{font-size:10px;color:var(--muted)}.input,.select,.textarea{width:100%;min-width:0;border:1px solid rgba(255,255,255,.13);background:rgba(4,8,16,.42);color:var(--text);border-radius:12px;padding:11px 12px;font-size:11px;outline:none}.input:focus,.select:focus,.textarea:focus{border-color:rgba(var(--accent-rgb),.6);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.08)}.textarea{min-height:76px;resize:vertical}.form-actions,.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:13px}.primary-btn,.soft-btn,.chip-btn,.danger-btn{border-radius:12px;padding:10px 14px;font-size:10px}.primary-btn{border-color:rgba(var(--accent-rgb),.42);background:linear-gradient(135deg,rgba(var(--accent-rgb),.27),rgba(var(--accent-rgb),.1));box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 24px rgba(var(--accent-rgb),.08);font-weight:750}.primary-btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(var(--accent-rgb),.15)}.soft-btn,.chip-btn{background:rgba(255,255,255,.035)}.danger-btn{border-color:rgba(255,135,155,.25);background:rgba(255,135,155,.08);color:#ff9eb0;padding:7px 10px}.empty{padding:23px 14px;text-align:center;color:var(--muted);font-size:11px;border:1px dashed rgba(255,255,255,.14);border-radius:15px;line-height:1.8}.note{font-size:9px;color:var(--muted);line-height:1.8;margin:10px 0 0}.catalog-grid,.exercise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:380px;overflow:auto;padding:2px}.catalog-item,.exercise-item{display:flex;align-items:flex-start;gap:9px;padding:11px;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:rgba(255,255,255,.025);min-width:0}.catalog-item input{accent-color:var(--accent);margin-top:3px}.catalog-item span,.exercise-item div{min-width:0;flex:1}.catalog-item strong,.exercise-item strong{display:block;font-size:10px;line-height:1.6}.catalog-item small,.exercise-item small{display:block;font-size:9px;color:var(--muted);line-height:1.6;margin-top:3px}.exercise-item button{font-size:9px;padding:7px 9px;white-space:nowrap}.profile-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.bmi-box{border:1px solid rgba(var(--accent-rgb),.22);background:rgba(var(--accent-rgb),.055);border-radius:13px;padding:10px}.bmi-box strong{display:block;font-size:22px;color:var(--accent-soft);margin-top:5px}.two-col{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr);gap:14px}.week-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;align-items:end;height:145px;padding:10px 0 0}.week-day{display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:end}.bar-wrap{height:105px;width:100%;display:flex;align-items:end;justify-content:center}.bar{width:min(25px,70%);min-height:3px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,var(--accent-soft),rgba(var(--accent-rgb),.28))}.week-day small{font-size:9px;color:var(--muted)}.week-day b{font-size:9px;color:var(--text)}.history-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}.history-row:last-child{border:0}.history-copy{flex:1;min-width:0}.history-row strong{font-size:10px;display:block}.history-row small{font-size:9px;color:var(--muted);display:block;margin-top:4px}.assistant-workspace{background:linear-gradient(135deg,rgba(var(--accent-rgb),.075),rgba(255,255,255,.035) 55%,rgba(255,255,255,.02))}.assistant-quick-actions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.assistant-quick-actions .chip-btn{border-radius:50px}.assistant-chat-log{display:grid;gap:9px;max-height:340px;overflow:auto;padding:3px 2px 12px}.assistant-message{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);border-radius:15px;padding:11px 13px;max-width:88%}.assistant-message.user{margin-right:auto;background:rgba(var(--accent-rgb),.09);border-color:rgba(var(--accent-rgb),.2)}.assistant-message-label{display:block;font-size:8px;color:var(--accent-soft);letter-spacing:1.2px;margin-bottom:5px}.assistant-message-text{font-size:10px;line-height:1.8;white-space:pre-wrap}.assistant-chat-form{display:flex;gap:8px;margin-top:8px}.assistant-chat-form .input{flex:1}.assistant-task-picker{display:grid;gap:7px;max-height:320px;overflow:auto}.assistant-task-option{display:flex;align-items:center;gap:9px;padding:10px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(255,255,255,.025)}.assistant-task-option input{accent-color:var(--accent)}.assistant-task-option span{min-width:0}.assistant-task-option strong{display:block;font-size:10px}.assistant-task-option small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.assistant-plan-list{padding-inline-start:20px;line-height:1.8}.assistant-local-tag{font-size:9px;color:var(--accent-soft);border:1px solid rgba(var(--accent-rgb),.22);padding:5px 8px;border-radius:99px}.theme-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;margin-top:14px}.theme-swatch{display:grid;justify-items:center;gap:7px;padding:11px 6px;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.025);color:var(--muted);font-size:9px}.theme-swatch .swatch-dot{width:28px;height:28px;border-radius:50%;background:var(--swatch);box-shadow:inset 0 1px 3px rgba(255,255,255,.6),0 0 18px color-mix(in srgb,var(--swatch),transparent 65%)}.theme-swatch.selected{border-color:var(--swatch);background:rgba(255,255,255,.07);color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}.settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.settings-row h3{font-size:13px;margin:0 0 5px}.settings-row p{font-size:10px;color:var(--muted);margin:0;line-height:1.7}.footer{margin:32px 0 0;text-align:center;color:#657087;font-size:8px;letter-spacing:1.4px}.toast{position:fixed;z-index:60;bottom:110px;left:50%;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:rgba(16,23,36,.88);border:1px solid rgba(var(--accent-rgb),.35);backdrop-filter:blur(20px);padding:11px 17px;border-radius:13px;font-size:11px;box-shadow:var(--shadow);max-width:90vw;text-align:center;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobile-nav{position:fixed;z-index:50;bottom:17px;left:50%;transform:translateX(-50%);width:min(610px,calc(100% - 34px));display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));border:1px solid rgba(236,245,255,.2);border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.045) 55%,rgba(255,255,255,.075));backdrop-filter:blur(34px) saturate(190%);-webkit-backdrop-filter:blur(34px) saturate(190%);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(255,255,255,.04),0 18px 55px rgba(0,0,0,.42)}.mobile-nav button{border:1px solid transparent;border-radius:16px;background:transparent;color:var(--muted);display:grid;justify-items:center;gap:4px;padding:7px 2px;min-width:0;transition:.2s}.mobile-nav button span{font-size:18px;line-height:1}.mobile-nav button b{font-size:8px;font-weight:600;white-space:nowrap}.mobile-nav button.active{color:var(--accent-soft);background:rgba(var(--accent-rgb),.12);border-color:rgba(var(--accent-rgb),.19);text-shadow:0 0 16px rgba(var(--accent-rgb),.3)}
+details{border:1px solid rgba(255,255,255,.09);border-radius:15px;background:rgba(255,255,255,.018);padding:12px 14px;margin-top:12px}details summary{cursor:pointer;font-size:11px;color:var(--accent-soft);font-weight:700;list-style:none}details summary::-webkit-details-marker{display:none}details summary:after{content:"＋";float:left;color:var(--muted)}details[open] summary:after{content:"−"}details[open] summary{margin-bottom:13px}
+@media(max-width:760px){.app-shell{width:min(100% - 24px,650px);padding:13px 0 125px}.topbar{margin-bottom:24px;padding:10px 11px;border-radius:19px}.brand img{width:38px;height:38px}.brand-copy strong{font-size:13px}.brand-copy small{font-size:8px}.top-actions{gap:5px}.icon-btn{width:37px;height:37px;border-radius:13px}.welcome-row{align-items:flex-start;margin-bottom:16px}.welcome-row h1{font-size:25px}.welcome-row p{max-width:260px}.welcome-row .primary-btn{padding:9px 11px;white-space:nowrap}.player-card{padding:17px}.rank-orb{width:66px;height:66px;font-size:23px}.stats-grid{gap:8px}.stat-card{padding:12px;min-height:90px}.stat-value{font-size:22px}.home-layout,.two-col{grid-template-columns:1fr;gap:10px}.panel{padding:14px;border-radius:19px}.form-grid{grid-template-columns:1fr}.profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-grid,.exercise-grid{grid-template-columns:1fr;max-height:330px}.theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.week-bars{gap:5px}.week-day small{font-size:8px}.notification-panel{position:fixed;top:68px;right:12px;left:12px;width:auto;max-height:calc(100vh - 160px)}.notification-list{max-height:calc(100vh - 250px)}.mobile-nav{bottom:calc(9px + env(safe-area-inset-bottom));width:calc(100% - 20px);padding:7px 7px calc(7px + env(safe-area-inset-bottom));border-radius:21px}.mobile-nav button{padding:7px 1px}.mobile-nav button span{font-size:17px}.mobile-nav button b{font-size:7px}.toast{bottom:100px}.assistant-chat-form{align-items:stretch}.assistant-chat-form .primary-btn{padding-inline:12px}}
+@media(max-width:390px){.brand-copy small{letter-spacing:1px}.top-actions .language-action{display:none}.stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.stat-card{padding:10px 8px}.stat-label{font-size:9px}.stat-value{font-size:20px}.stat-sub{font-size:8px}.level-pill{min-width:55px;padding:8px}.welcome-row h1{font-size:22px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* VESPERA V6.1 — refined liquid-glass visual layer (presentation only) */
+:root{
+  --bg:#071326;
+  --text:#edf5ff;
+  --muted:#9eafc7;
+  --line:rgba(205,226,255,.17);
+  --glass:rgba(172,204,245,.045);
+  --glass-strong:rgba(172,204,245,.085);
+  --shadow:0 16px 44px rgba(0,7,20,.22);
+}
+html{scroll-padding-top:78px}
+body{
+  background:
+    radial-gradient(ellipse at 14% 8%,rgba(54,116,190,.18),transparent 32rem),
+    radial-gradient(ellipse at 86% 30%,rgba(56,91,151,.12),transparent 34rem),
+    radial-gradient(ellipse at 50% 100%,rgba(var(--accent-rgb),.075),transparent 36rem),
+    #071326;
+}
+body:before{
+  background:
+    radial-gradient(circle at 17% 12%,rgba(110,173,245,.12),transparent 23rem),
+    radial-gradient(circle at 86% 72%,rgba(var(--accent-rgb),.075),transparent 25rem);
+  filter:blur(34px);
+  opacity:.9;
+}
+body:after{display:none}
+.app-shell{width:min(1080px,calc(100% - 40px));padding:22px 0 132px}
+.topbar,.panel,.stat-card,.player-card,.notification-panel,.mobile-nav,.toast{
+  border:1px solid rgba(211,231,255,.17);
+  background:linear-gradient(145deg,rgba(221,237,255,.095),rgba(126,165,214,.045) 46%,rgba(255,255,255,.025));
+  backdrop-filter:blur(30px) saturate(185%);
+  -webkit-backdrop-filter:blur(30px) saturate(185%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -1px 0 rgba(255,255,255,.025),0 16px 42px rgba(0,7,20,.19);
+}
+.topbar{margin-bottom:27px;padding:12px 15px;border-radius:20px}
+.brand img{width:43px;height:43px;filter:drop-shadow(0 5px 14px rgba(24,91,166,.28))}
+.brand-copy strong{letter-spacing:2.2px}
+.icon-btn,.soft-btn,.chip-btn,.primary-btn,.danger-btn{
+  border-color:rgba(210,231,255,.16);
+  background:rgba(203,225,255,.055);
+  border-radius:13px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09);
+}
+.icon-btn{border-radius:14px}
+.icon-btn:hover,.soft-btn:hover,.chip-btn:hover{background:rgba(var(--accent-rgb),.12);border-color:rgba(var(--accent-rgb),.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.13)}
+.notification-panel{
+  background:linear-gradient(145deg,rgba(20,39,66,.78),rgba(8,21,40,.7));
+  border-color:rgba(216,235,255,.2);
+  border-radius:19px;
+  box-shadow:0 22px 58px rgba(0,5,18,.34),inset 0 1px 0 rgba(255,255,255,.16);
+}
+.notification-item,.task-row,.catalog-item,.exercise-item,.assistant-task-option,.theme-swatch,.level-pill,.bmi-box{
+  border:1px solid rgba(211,231,255,.12);
+  background:rgba(188,215,249,.045);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-radius:15px;
+}
+.notification-item{background:rgba(196,220,250,.055)}
+.notification-copy p{color:#c6d5e9}
+.notification-dot{box-shadow:0 0 9px rgba(var(--accent-rgb),.28)}
+.welcome-row{margin:3px 2px 19px}
+.welcome-row h1{letter-spacing:-.45px}
+.page-title{margin-bottom:19px}
+.page-title h2{letter-spacing:-.35px}
+.panel,.stat-card,.player-card{border-radius:19px}
+.panel{padding:17px;margin-bottom:13px}
+.player-card{padding:21px;margin-bottom:13px}
+.player-card:after{width:230px;height:230px;background:radial-gradient(circle,rgba(var(--accent-rgb),.11),transparent 72%)}
+.rank-orb{
+  border-color:rgba(166,207,255,.34);
+  background:radial-gradient(circle at 28% 22%,rgba(255,255,255,.25),rgba(91,151,218,.15) 40%,rgba(41,83,137,.055) 76%);
+  box-shadow:inset 0 2px 9px rgba(255,255,255,.17),inset 0 -7px 15px rgba(8,29,57,.12),0 0 25px rgba(var(--accent-rgb),.09);
+}
+.level-pill{background:rgba(197,222,255,.055);border-radius:13px}
+.progress-line{background:rgba(198,221,250,.11);box-shadow:inset 0 1px 2px rgba(0,0,0,.12)}
+.progress-line span{box-shadow:0 0 12px rgba(var(--accent-rgb),.24)}
+.stats-grid{gap:10px;margin-bottom:20px}
+.stat-card{padding:14px 15px;min-height:91px}
+.stat-value{font-size:24px;margin:7px 0 2px}
+.home-layout,.two-col{gap:13px}
+.section-head{margin:4px 1px 11px}
+.section-head h3{font-size:13px}
+.section-head p{line-height:1.65}
+.task-list{gap:7px}
+.task-row{padding:10px 11px}
+.task-row:hover,.catalog-item:hover,.exercise-item:hover,.assistant-task-option:hover{border-color:rgba(var(--accent-rgb),.25);background:rgba(var(--accent-rgb),.065)}
+.pill{background:rgba(var(--accent-rgb),.09);border:1px solid rgba(var(--accent-rgb),.16);padding:4px 8px}
+.assistant-bubble{border:1px solid rgba(var(--accent-rgb),.18);background:linear-gradient(135deg,rgba(var(--accent-rgb),.09),rgba(199,222,250,.035));border-radius:15px;color:#e0ebfa}
+.input,.select,.textarea{
+  border:1px solid rgba(211,231,255,.15);
+  background:rgba(5,16,32,.34);
+  border-radius:13px;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.input::placeholder,.textarea::placeholder{color:rgba(174,194,222,.56)}
+.input:focus,.select:focus,.textarea:focus{border-color:rgba(var(--accent-rgb),.52);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.075)}
+.primary-btn{
+  border-color:rgba(var(--accent-rgb),.34);
+  background:linear-gradient(135deg,rgba(var(--accent-rgb),.2),rgba(var(--accent-rgb),.075));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 7px 18px rgba(var(--accent-rgb),.055);
+}
+.soft-btn,.chip-btn{background:rgba(197,220,250,.045)}
+.danger-btn{background:rgba(255,135,155,.07)}
+.empty{border-color:rgba(211,231,255,.15);background:rgba(190,215,246,.025)}
+details{border:1px solid rgba(211,231,255,.12);background:rgba(192,218,250,.03);border-radius:15px}
+details summary{color:var(--accent-soft)}
+.assistant-workspace{background:linear-gradient(135deg,rgba(var(--accent-rgb),.075),rgba(190,216,249,.035) 58%,rgba(255,255,255,.018))}
+.assistant-message{border-color:rgba(211,231,255,.13);background:rgba(195,219,249,.05);border-radius:14px}
+.assistant-message.user{background:rgba(var(--accent-rgb),.095);border-color:rgba(var(--accent-rgb),.2)}
+.assistant-local-tag{background:rgba(var(--accent-rgb),.055)}
+.theme-swatch{background:rgba(194,219,250,.035);border-radius:14px}
+.theme-swatch.selected{background:rgba(var(--accent-rgb),.095);border-color:rgba(var(--accent-rgb),.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.mobile-nav{
+  bottom:13px;
+  width:min(570px,calc(100% - 32px));
+  gap:5px;
+  padding:8px 9px calc(8px + env(safe-area-inset-bottom));
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(218,235,255,.15),rgba(94,137,190,.085) 48%,rgba(255,255,255,.045));
+  border-color:rgba(222,239,255,.23);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -1px 0 rgba(255,255,255,.035),0 14px 38px rgba(0,5,18,.3);
+}
+.mobile-nav button{border-radius:15px;padding:7px 3px;transition:background .18s,border-color .18s,color .18s}
+.mobile-nav button.active{background:linear-gradient(145deg,rgba(var(--accent-rgb),.17),rgba(var(--accent-rgb),.07));border-color:rgba(var(--accent-rgb),.22);text-shadow:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.mobile-nav button span{font-size:17px}
+.mobile-nav button b{font-size:8px;letter-spacing:.05px}
+.toast{background:rgba(12,27,48,.78);border-color:rgba(var(--accent-rgb),.3);border-radius:14px}
+.footer{color:rgba(164,185,214,.55);letter-spacing:1.1px}
+@media(max-width:760px){
+  .app-shell{width:calc(100% - 24px);padding:12px 0 126px}
+  .topbar{margin-bottom:22px;padding:9px 10px;border-radius:18px}
+  .panel{padding:14px;border-radius:17px}
+  .player-card{padding:17px;border-radius:18px}
+  .stat-card{padding:11px 10px;min-height:84px}
+  .stats-grid{gap:7px;margin-bottom:17px}
+  .home-layout,.two-col{gap:9px}
+  .mobile-nav{bottom:calc(8px + env(safe-area-inset-bottom));width:calc(100% - 22px);padding:7px 7px calc(7px + env(safe-area-inset-bottom));border-radius:20px}
+  .mobile-nav button{padding:7px 1px}
+  .notification-panel{background:linear-gradient(145deg,rgba(20,39,66,.9),rgba(8,21,40,.88))}
+}
+@media(max-width:390px){
+  .app-shell{width:calc(100% - 20px)}
+  .stat-card{padding:9px 7px}
+  .stat-value{font-size:19px}
+  .stat-label{font-size:8px}
+  .stat-sub{font-size:7.5px}
+  .mobile-nav button b{font-size:7px}
+}
+
+
+
+/* VESPERA V6.2 — Orbital Liquid Glass. Shape language: circles for status, rectangles for information. */
+:root{
+  --bg:#080b11;
+  --text:#edf2f8;
+  --muted:#9ca8b8;
+  --line:rgba(224,235,248,.14);
+  --glass:rgba(220,232,248,.032);
+  --glass-strong:rgba(220,232,248,.065);
+  --accent:#6f9fcf;
+  --accent-soft:#c0d9f3;
+  --accent-rgb:111,159,207;
+  --shadow:0 18px 48px rgba(0,0,0,.28);
+}
+:root[data-theme="blue"]{--accent:#6f9fcf;--accent-soft:#c0d9f3;--accent-rgb:111,159,207}
+html{scroll-padding-top:76px}
+body{
+  background:
+    radial-gradient(ellipse at 50% -12%,rgba(75,112,158,.14),transparent 36rem),
+    radial-gradient(ellipse at 4% 78%,rgba(255,255,255,.022),transparent 25rem),
+    radial-gradient(ellipse at 100% 90%,rgba(var(--accent-rgb),.045),transparent 28rem),
+    #080b11;
+}
+body:before{
+  background:
+    radial-gradient(circle at 16% 12%,rgba(119,166,218,.075),transparent 23rem),
+    radial-gradient(circle at 88% 72%,rgba(255,255,255,.025),transparent 25rem);
+  filter:blur(38px);
+  opacity:.82;
+}
+body:after{
+  display:block;
+  opacity:.035;
+  background-image:radial-gradient(rgba(255,255,255,.8) .55px,transparent .55px);
+  background-size:19px 19px;
+  mask-image:linear-gradient(to bottom,black,transparent 82%);
+}
+.app-shell{width:min(1080px,calc(100% - 38px));padding:22px 0 132px}
+.topbar,.panel,.stat-card,.player-card,.notification-panel,.mobile-nav,.toast{
+  border:1px solid rgba(224,235,248,.135);
+  background:linear-gradient(145deg,rgba(244,248,255,.065),rgba(182,204,232,.022) 48%,rgba(255,255,255,.018));
+  backdrop-filter:blur(28px) saturate(155%);
+  -webkit-backdrop-filter:blur(28px) saturate(155%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(255,255,255,.018),0 16px 42px rgba(0,0,0,.22);
+}
+.topbar{
+  margin-bottom:28px;
+  padding:11px 14px;
+  border-radius:21px;
+  background:linear-gradient(110deg,rgba(255,255,255,.055),rgba(255,255,255,.018) 58%,rgba(91,137,190,.035));
+}
+.brand img{width:43px;height:43px;filter:drop-shadow(0 4px 12px rgba(29,79,128,.24))}
+.brand-copy strong{letter-spacing:2.3px}
+.top-actions{gap:7px}
+.icon-btn{
+  width:40px;height:40px;border-radius:50%;
+  border-color:rgba(224,235,248,.14);
+  background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.09),rgba(255,255,255,.018) 72%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 5px 16px rgba(0,0,0,.1);
+}
+.icon-btn:hover,.soft-btn:hover,.chip-btn:hover{background:rgba(var(--accent-rgb),.09);border-color:rgba(var(--accent-rgb),.3)}
+.notification-panel{
+  background:linear-gradient(145deg,rgba(24,30,42,.88),rgba(11,15,23,.82));
+  border-color:rgba(224,235,248,.17);
+  border-radius:19px;
+}
+.notification-item,.task-row,.catalog-item,.exercise-item,.assistant-task-option,.theme-swatch,.level-pill,.bmi-box{
+  border:1px solid rgba(224,235,248,.105);
+  background:rgba(220,232,248,.028);
+  backdrop-filter:blur(15px) saturate(135%);
+  -webkit-backdrop-filter:blur(15px) saturate(135%);
+}
+.notification-item{border-radius:13px;background:rgba(220,232,248,.035)}
+.notification-copy p{color:#c1cbd8}
+.notification-dot{box-shadow:0 0 8px rgba(var(--accent-rgb),.25)}
+.welcome-row{margin:4px 2px 20px}
+.eyebrow,.section-code{color:var(--accent-soft)}
+.welcome-row h1{letter-spacing:-.5px}
+.page-title{margin-bottom:20px}
+.page-title h2{letter-spacing:-.35px}
+.panel,.player-card{
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(245,249,255,.052),rgba(190,211,238,.018) 58%,rgba(255,255,255,.018));
+}
+.panel{padding:17px;margin-bottom:14px}
+.player-card{
+  padding:21px;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(125deg,rgba(255,255,255,.062),rgba(109,159,207,.035) 54%,rgba(255,255,255,.018));
+  border-color:rgba(214,231,250,.17);
+}
+.player-card:after{
+  width:230px;height:230px;top:-155px;left:-78px;
+  background:radial-gradient(circle,rgba(var(--accent-rgb),.105),transparent 70%);
+}
+.player-card:before{
+  content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(125deg,rgba(255,255,255,.055),transparent 32%,transparent 72%,rgba(255,255,255,.018));
+}
+.player-main{gap:17px}
+.rank-orb{
+  width:78px;height:78px;border-radius:50%;
+  border:1px solid rgba(190,220,250,.32);
+  background:radial-gradient(circle at 29% 22%,rgba(255,255,255,.27),rgba(117,166,218,.12) 38%,rgba(255,255,255,.018) 76%);
+  box-shadow:inset 0 2px 9px rgba(255,255,255,.2),inset 0 -8px 16px rgba(0,0,0,.14),0 0 0 5px rgba(210,230,250,.018),0 0 24px rgba(var(--accent-rgb),.075);
+  color:var(--accent-soft);
+}
+.level-pill{
+  min-width:62px;padding:9px 12px;border-radius:14px;
+  background:rgba(220,232,248,.035);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.progress-line{height:6px;background:rgba(225,235,248,.075);box-shadow:inset 0 1px 2px rgba(0,0,0,.16)}
+.progress-line span{box-shadow:0 0 10px rgba(var(--accent-rgb),.2)}
+.progress-meta{font-size:9px}
+/* The three key metrics become compact glass orbs; information cards remain rectangular. */
+.stats-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  justify-items:center;align-items:center;gap:12px;margin:0 0 24px;
+}
+.stat-card{
+  width:min(100%,142px);aspect-ratio:1;min-height:0;
+  padding:12px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.105),rgba(195,216,241,.035) 47%,rgba(255,255,255,.012) 78%);
+  border-color:rgba(224,235,248,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.19),inset 0 -8px 18px rgba(0,0,0,.12),0 12px 28px rgba(0,0,0,.14);
+}
+.stat-card:before{
+  content:"";position:absolute;inset:6px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.045);pointer-events:none;
+}
+.stat-label{font-size:9px;line-height:1.5;max-width:100%;position:relative;z-index:1}
+.stat-value{font-size:24px;margin:5px 0 1px;line-height:1.15;position:relative;z-index:1}
+.stat-sub{font-size:8px;line-height:1.4;position:relative;z-index:1}
+.accent{color:var(--accent-soft)}
+.home-layout{gap:14px}
+.section-head{margin:4px 1px 11px}
+.section-head h3{font-size:14px}
+.section-head p{line-height:1.7}
+.task-list{gap:8px}
+.task-row{
+  padding:11px 12px;border-radius:13px;
+  border-inline-start:2px solid rgba(var(--accent-rgb),.26);
+  background:linear-gradient(110deg,rgba(255,255,255,.035),rgba(255,255,255,.016));
+}
+.task-check{width:17px;height:17px;border-radius:50%;accent-color:var(--accent)}
+.task-row:hover,.catalog-item:hover,.exercise-item:hover,.assistant-task-option:hover{border-color:rgba(var(--accent-rgb),.25);background:rgba(var(--accent-rgb),.045)}
+.pill{background:rgba(var(--accent-rgb),.075);border:1px solid rgba(var(--accent-rgb),.13);padding:4px 8px}
+.assistant-bubble{
+  border:1px solid rgba(var(--accent-rgb),.14);
+  background:linear-gradient(135deg,rgba(var(--accent-rgb),.055),rgba(255,255,255,.018));
+  border-radius:15px;color:#dce5f0;
+}
+.catalog-item,.exercise-item,.assistant-task-option{border-radius:13px}
+.input,.select,.textarea{
+  border:1px solid rgba(224,235,248,.12);
+  background:rgba(5,9,15,.36);
+  border-radius:12px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.input:focus,.select:focus,.textarea:focus{border-color:rgba(var(--accent-rgb),.43);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.055)}
+.primary-btn{
+  border-color:rgba(var(--accent-rgb),.27);
+  background:linear-gradient(135deg,rgba(var(--accent-rgb),.13),rgba(255,255,255,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 6px 16px rgba(0,0,0,.1);
+}
+.soft-btn,.chip-btn{background:rgba(255,255,255,.025);border-color:rgba(224,235,248,.12)}
+.danger-btn{background:rgba(255,135,155,.045)}
+.empty{border-color:rgba(224,235,248,.12);background:rgba(255,255,255,.012);border-radius:14px}
+details{border-color:rgba(224,235,248,.11);background:rgba(255,255,255,.018);border-radius:14px}
+details summary{color:var(--accent-soft)}
+.assistant-workspace{background:linear-gradient(135deg,rgba(var(--accent-rgb),.045),rgba(255,255,255,.02) 58%,rgba(255,255,255,.012))}
+.assistant-message{border-color:rgba(224,235,248,.11);background:rgba(255,255,255,.028);border-radius:14px}
+.assistant-message.user{background:rgba(var(--accent-rgb),.065);border-color:rgba(var(--accent-rgb),.16)}
+.assistant-local-tag{background:rgba(var(--accent-rgb),.04)}
+.theme-swatch{background:rgba(255,255,255,.022);border-radius:13px}
+.theme-swatch.selected{background:rgba(var(--accent-rgb),.065);border-color:rgba(var(--accent-rgb),.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+/* A floating neutral glass dock: only the selected icon receives a circular accent lens. */
+.mobile-nav{
+  bottom:calc(11px + env(safe-area-inset-bottom));
+  width:min(570px,calc(100% - 30px));
+  gap:4px;padding:7px 9px calc(7px + env(safe-area-inset-bottom));
+  border-radius:25px;
+  background:linear-gradient(145deg,rgba(28,34,45,.76),rgba(13,18,27,.7) 58%,rgba(24,31,42,.68));
+  border-color:rgba(230,239,250,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),inset 0 -1px 0 rgba(255,255,255,.02),0 16px 38px rgba(0,0,0,.38);
+}
+.mobile-nav button{
+  border:1px solid transparent;border-radius:15px;background:transparent;
+  color:rgba(210,220,233,.72);display:grid;justify-items:center;align-content:center;
+  gap:3px;padding:4px 2px;min-width:0;
+}
+.mobile-nav button span{
+  width:34px;height:34px;display:grid;place-items:center;
+  border-radius:50%;font-size:17px;line-height:1;
+  background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.035);
+  transition:background .2s,border-color .2s,box-shadow .2s;
+}
+.mobile-nav button b{font-size:8px;font-weight:600;white-space:nowrap;letter-spacing:0}
+.mobile-nav button.active{
+  color:var(--accent-soft);background:transparent;border-color:transparent;text-shadow:none;box-shadow:none;
+}
+.mobile-nav button.active span{
+  color:var(--accent-soft);
+  background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.17),rgba(var(--accent-rgb),.13) 62%,rgba(var(--accent-rgb),.045));
+  border-color:rgba(var(--accent-rgb),.24);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.17),0 3px 12px rgba(var(--accent-rgb),.08);
+}
+.toast{background:rgba(15,20,29,.82);border-color:rgba(224,235,248,.17);border-radius:14px}
+.footer{color:rgba(160,174,193,.46);letter-spacing:1px}
+@media(max-width:760px){
+  .app-shell{width:calc(100% - 26px);padding:12px 0 128px}
+  .topbar{margin-bottom:22px;padding:9px 10px;border-radius:19px}
+  .brand img{width:38px;height:38px}
+  .brand-copy strong{font-size:13px}
+  .brand-copy small{font-size:8px;letter-spacing:1.25px}
+  .top-actions{gap:5px}
+  .icon-btn{width:36px;height:36px}
+  .welcome-row{align-items:flex-start;margin-bottom:16px}
+  .welcome-row h1{font-size:25px}
+  .welcome-row p{max-width:260px}
+  .player-card{padding:17px;border-radius:19px}
+  .rank-orb{width:65px;height:65px;font-size:23px}
+  .rank-info h2{font-size:15px}
+  .stats-grid{gap:7px;margin:0 0 19px}
+  .stat-card{width:min(100%,112px);padding:8px}
+  .stat-label{font-size:8px}
+  .stat-value{font-size:21px;margin:4px 0 1px}
+  .stat-sub{font-size:7.5px}
+  .home-layout,.two-col{grid-template-columns:1fr;gap:9px}
+  .panel{padding:14px;border-radius:17px}
+  .form-grid{grid-template-columns:1fr}
+  .profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .catalog-grid,.exercise-grid{grid-template-columns:1fr;max-height:330px}
+  .theme-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .week-bars{gap:5px}
+  .week-day small{font-size:8px}
+  .notification-panel{position:fixed;top:68px;right:12px;left:12px;width:auto;max-height:calc(100vh - 160px)}
+  .notification-list{max-height:calc(100vh - 250px)}
+  .mobile-nav{bottom:calc(8px + env(safe-area-inset-bottom));width:calc(100% - 22px);padding:6px 7px calc(6px + env(safe-area-inset-bottom));border-radius:22px}
+  .mobile-nav button{padding:3px 1px;gap:2px}
+  .mobile-nav button span{width:32px;height:32px;font-size:16px}
+  .mobile-nav button b{font-size:7px}
+  .toast{bottom:100px}
+  .assistant-chat-form{align-items:stretch}
+  .assistant-chat-form .primary-btn{padding-inline:12px}
+}
+@media(max-width:390px){
+  .app-shell{width:calc(100% - 22px)}
+  .top-actions .language-action{display:none}
+  .stats-grid{gap:5px}
+  .stat-card{width:min(100%,104px)}
+  .stat-label{font-size:7.5px}
+  .stat-value{font-size:20px}
+  .stat-sub{font-size:7px}
+  .mobile-nav button b{font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+
+/* VESPERA V6.3 FUSION — V4 visual language + V6.2 feature set */
+:root{
+  --bg:#07090f;--panel:rgba(19,24,37,.66);--panel2:rgba(255,255,255,.045);
+  --line:rgba(220,232,255,.12);--line2:rgba(220,232,255,.2);
+  --shadow:0 22px 70px rgba(0,0,0,.38);
+}
+body{
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(var(--accent-rgb),.105),transparent 36%),
+    radial-gradient(ellipse at 90% 30%,rgba(255,255,255,.03),transparent 34%),
+    linear-gradient(145deg,#06080d,#0b0e17 55%,#080a11);
+}
+body:after{opacity:.055}
+.app-shell{width:min(1120px,calc(100% - 34px));padding:20px 0 136px}
+.topbar{
+  margin-bottom:25px;padding:10px 2px;border:0;border-radius:0;
+  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;
+  box-shadow:none;
+}
+.brand img{width:46px;height:46px;filter:drop-shadow(0 0 15px rgba(var(--accent-rgb),.16))}
+.brand-copy strong{font-size:16px;letter-spacing:3px}
+.brand-copy small{letter-spacing:1.55px}
+.icon-btn,.soft-btn,.chip-btn,.primary-btn,.danger-btn{
+  border-radius:13px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.icon-btn{width:40px;height:40px;border-radius:13px}
+.primary-btn{
+  border:1px solid rgba(var(--accent-rgb),.38);
+  background:linear-gradient(135deg,rgba(var(--accent-rgb),.19),rgba(var(--accent-rgb),.055));
+  box-shadow:inset 0 1px rgba(255,255,255,.14),0 8px 24px rgba(var(--accent-rgb),.07);
+  font-weight:750
+}
+.soft-btn,.chip-btn{background:rgba(255,255,255,.035)}
+.panel,.stat-card,.player-card{
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(255,255,255,.068),rgba(255,255,255,.022));
+  backdrop-filter:blur(23px) saturate(145%);-webkit-backdrop-filter:blur(23px) saturate(145%);
+  box-shadow:var(--shadow),inset 0 1px rgba(255,255,255,.06);
+  border-radius:21px
+}
+.panel{padding:18px;margin-bottom:14px}
+.player-card{
+  padding:clamp(20px,3vw,30px);margin-bottom:16px;border-radius:24px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+}
+.player-card:after{
+  width:300px;height:300px;top:-180px;left:-95px;
+  background:radial-gradient(circle,rgba(var(--accent-rgb),.13),transparent 70%)
+}
+.player-main{gap:20px}
+.rank-orb{
+  width:112px;height:112px;font-size:38px;
+  background:radial-gradient(circle,rgba(var(--accent-rgb),.15),rgba(255,255,255,.025) 66%);
+  border-color:rgba(var(--accent-rgb),.36);
+  box-shadow:0 0 0 8px rgba(var(--accent-rgb),.025),0 0 40px rgba(var(--accent-rgb),.10),inset 0 0 25px rgba(var(--accent-rgb),.07)
+}
+.rank-info h2{font-size:20px;margin:7px 0}
+.rank-info small{letter-spacing:1.7px}
+.rank-info p{font-size:11px}
+.level-pill{border-radius:14px;background:rgba(255,255,255,.025);min-width:72px}
+.progress-line{height:8px;margin-top:19px}
+.progress-line span{box-shadow:0 0 13px rgba(var(--accent-rgb),.27)}
+.welcome-row{margin-bottom:17px}
+.welcome-row h1{font-size:clamp(25px,4.3vw,37px);letter-spacing:-.5px}
+.welcome-row p{font-size:12px}
+.section-head{margin:7px 1px 13px}
+.section-head h3{font-size:15px}
+.section-head p{font-size:10px}
+.home-layout{gap:13px}
+.task-list{gap:9px}
+.task-row{
+  padding:12px 13px;border-radius:15px;
+  border:1px solid var(--line);border-inline-start:2px solid rgba(var(--accent-rgb),.25);
+  background:rgba(255,255,255,.027)
+}
+.task-row:hover,.catalog-item:hover,.exercise-item:hover,.assistant-task-option:hover{
+  border-color:rgba(var(--accent-rgb),.34);background:rgba(var(--accent-rgb),.045)
+}
+.task-check{width:22px;height:22px;border-radius:8px}
+.stat-card{
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.10),rgba(195,216,241,.028) 50%,rgba(255,255,255,.012) 78%);
+}
+.stat-card:before{border-color:rgba(255,255,255,.055)}
+.input,.select,.textarea{
+  border:1px solid var(--line2);border-radius:13px;
+  background:rgba(3,6,12,.42);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+.input:focus,.select:focus,.textarea:focus{
+  border-color:rgba(var(--accent-rgb),.45);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.06)
+}
+.empty{border-radius:15px;background:rgba(255,255,255,.012)}
+.assistant-workspace{
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(var(--accent-rgb),.025))
+}
+.assistant-message{border-radius:15px}
+.theme-swatch{border-radius:14px}
+.mobile-nav{
+  width:min(690px,calc(100% - 24px));padding:7px;
+  border-radius:22px;background:rgba(10,14,23,.82);
+  border:1px solid var(--line2);
+  box-shadow:0 16px 55px rgba(0,0,0,.5),inset 0 1px rgba(255,255,255,.1);
+  backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px)
+}
+.mobile-nav button span{width:34px;height:34px}
+.mobile-nav button.active span{
+  background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.17),rgba(var(--accent-rgb),.13) 62%,rgba(var(--accent-rgb),.045));
+}
+.toast{background:rgba(15,20,29,.9);border:1px solid var(--line2);border-radius:13px}
+@media(max-width:760px){
+  .app-shell{width:calc(100% - 26px);padding:12px 0 126px}
+  .topbar{margin-bottom:19px;padding:6px 1px}
+  .brand img{width:40px;height:40px}
+  .player-card{padding:17px;border-radius:20px}
+  .player-main{gap:13px}
+  .rank-orb{width:78px;height:78px;font-size:27px}
+  .rank-info h2{font-size:16px}
+  .panel{padding:15px;border-radius:18px}
+  .home-layout,.two-col{grid-template-columns:1fr;gap:10px}
+  .stats-grid{gap:7px}
+  .stat-card{width:min(100%,112px);padding:8px}
+  .mobile-nav{bottom:calc(8px + env(safe-area-inset-bottom));width:calc(100% - 22px)}
+}
+@media(max-width:390px){
+  .app-shell{width:calc(100% - 22px)}
+  .rank-orb{width:68px;height:68px;font-size:24px}
+  .rank-info h2{font-size:14px}
+  .mobile-nav button span{width:30px;height:30px}
+}
+
+
+/* V7 / TRUE CRYSTAL LIQUID GLASS */
+.mobile-nav{grid-template-columns:repeat(6,minmax(0,1fr))}.mobile-nav button{min-width:0;padding-inline:2px}.mobile-nav button b{font-size:9px}
+:root{--glass:rgba(235,246,255,.018);--glass-strong:rgba(235,246,255,.035);--line:rgba(225,241,255,.22)}
+:root[data-theme="burgundy"]{--accent:#b94b68;--accent-soft:#ef9bad;--accent-rgb:185,75,104}
+:root[data-theme="silver"]{--accent:#c6d2df;--accent-soft:#edf4fb;--accent-rgb:198,210,223}
+:root[data-theme="ice"]{--accent:#a5dcff;--accent-soft:#d5f0ff;--accent-rgb:165,220,255}
+.panel,.topbar,.mobile-nav,.task-row,.catalog-item,.exercise-item,.assistant-task-option,.theme-swatch,.level-pill,.bmi-box,.notification-item{
+ background:linear-gradient(135deg,rgba(255,255,255,.038),rgba(255,255,255,.008) 52%,rgba(var(--accent-rgb),.018))!important;
+ border:1px solid rgba(225,242,255,.19)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.035),0 18px 55px rgba(0,0,0,.2),0 0 22px rgba(var(--accent-rgb),.035)!important;
+ backdrop-filter:blur(30px) saturate(190%)!important;-webkit-backdrop-filter:blur(30px) saturate(190%)!important;
+}
+.panel:before,.topbar:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(125deg,rgba(255,255,255,.12),transparent 22%,transparent 70%,rgba(var(--accent-rgb),.07));opacity:.42}
+.panel{position:relative;overflow:hidden}
+.panel>*{position:relative}
+.brand img{filter:drop-shadow(0 0 7px rgba(255,255,255,.35)) drop-shadow(0 0 18px rgba(var(--accent-rgb),.35))}
+.theme-grid{grid-template-columns:repeat(auto-fit,minmax(92px,1fr))}
+.prayer-hero{background:radial-gradient(ellipse at 80% 10%,rgba(var(--accent-rgb),.14),transparent 60%),linear-gradient(130deg,rgba(255,255,255,.045),rgba(255,255,255,.008))!important}
+.prayer-hero-top{display:flex;align-items:center;justify-content:space-between;gap:16px}.prayer-hero h3{font-size:clamp(25px,5vw,38px);margin:8px 0}.next-count{text-align:center;border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:12px 18px;background:rgba(255,255,255,.018);min-width:132px}.next-count strong{display:block;font-size:clamp(20px,4vw,28px);font-variant-numeric:tabular-nums;color:var(--accent-soft)}.next-count small{color:var(--muted)}
+.prayer-progress{height:7px;border-radius:20px;background:rgba(255,255,255,.08);overflow:hidden;margin:18px 0 8px}.prayer-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-soft));border-radius:inherit;transition:width .3s}.prayer-progress-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.prayer-times-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.prayer-time-card{border:1px solid rgba(235,245,255,.16);background:rgba(255,255,255,.018);border-radius:16px;padding:14px 8px;text-align:center;min-width:0}.prayer-time-card strong{display:block;font-size:13px;margin-bottom:8px}.prayer-time-card span{font-size:clamp(12px,2vw,16px);color:var(--accent-soft);font-variant-numeric:tabular-nums}.prayer-time-card.next{border-color:rgba(var(--accent-rgb),.6);box-shadow:inset 0 0 20px rgba(var(--accent-rgb),.08)}
+.prayer-check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px}.prayer-check{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid rgba(235,245,255,.16);background:rgba(255,255,255,.018);border-radius:15px;padding:12px}.prayer-check.done{border-color:rgba(117,217,173,.35);background:rgba(117,217,173,.045)}.prayer-check button{border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--text);border-radius:10px;padding:7px 10px}.prayer-check.done button{color:#83d9b2}
+.prayer-history{margin-top:20px}.prayer-history h4{margin:0 0 10px}.history-row{display:grid;grid-template-columns:90px 1fr 38px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px}.history-dots{display:flex;gap:5px}.history-dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.13)}.history-dots i.on{background:#83d9b2;box-shadow:0 0 8px rgba(131,217,178,.3)}
+.dhikr-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.dhikr-tabs .selected{border-color:rgba(var(--accent-rgb),.5);background:rgba(var(--accent-rgb),.12)}.dhikr-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid rgba(255,255,255,.07)}.dhikr-item p{margin:0;line-height:1.8;font-size:14px}.dhikr-count{display:flex;align-items:center;gap:7px;flex-shrink:0}.dhikr-count button{width:35px;height:35px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.08);color:var(--text)}.dhikr-count span{min-width:22px;text-align:center;font-variant-numeric:tabular-nums}
+.tasbeeh-counter{text-align:center;padding:15px}.tasbeeh-counter strong{display:block;font-size:clamp(48px,12vw,76px);font-variant-numeric:tabular-nums;color:var(--accent-soft);text-shadow:0 0 28px rgba(var(--accent-rgb),.24)}.tasbeeh-counter span{color:var(--muted)}.tasbeeh-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.prayer-settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}.prayer-settings label{display:grid;gap:7px;color:var(--muted);font-size:12px}.prayer-settings .input{width:100%;padding:12px;border-radius:12px;color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.035)}
+@media(max-width:650px){.prayer-times-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.prayer-hero-top{align-items:flex-start;flex-direction:column}.next-count{width:100%}.history-row{grid-template-columns:75px 1fr 32px}}
+
+
+/* VESPERA V7.1 — Crystal Liquid Glass: high-transparency, raised optical-glass layer */
+:root{
+  --line:rgba(238,247,255,.34);
+  --glass:rgba(220,238,255,.012);
+  --glass-strong:rgba(220,238,255,.026);
+  --shadow:0 16px 38px rgba(0,0,0,.16);
+}
+body{
+  background:
+    radial-gradient(ellipse at 12% 14%,rgba(82,169,255,.20),transparent 27rem),
+    radial-gradient(ellipse at 86% 26%,rgba(171,111,255,.17),transparent 25rem),
+    radial-gradient(ellipse at 74% 83%,rgba(255,105,166,.12),transparent 28rem),
+    radial-gradient(ellipse at 20% 88%,rgba(70,221,214,.12),transparent 25rem),
+    #080b13!important;
+}
+body:before{
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.12),transparent 32rem),
+    radial-gradient(ellipse at 10% 50%,rgba(100,177,255,.08),transparent 24rem),
+    radial-gradient(ellipse at 95% 70%,rgba(203,128,255,.08),transparent 23rem)!important;
+  filter:blur(24px)!important;opacity:.9!important;
+}
+body:after{
+  background:linear-gradient(125deg,rgba(255,255,255,.018),transparent 28%,transparent 72%,rgba(255,255,255,.018));
+}
+.topbar,.panel,.stat-card,.player-card,.notification-panel,.mobile-nav,.toast,
+.task-row,.catalog-item,.exercise-item,.assistant-task-option,.theme-swatch,
+.level-pill,.bmi-box,.notification-item,.prayer-check,.dhikr-count,
+button:not(.mobile-nav button){
+  background-color:rgba(225,240,255,.012)!important;
+  background-image:
+    linear-gradient(132deg,rgba(255,255,255,.105) 0%,rgba(255,255,255,.018) 18%,transparent 42%,rgba(255,255,255,.008) 72%,rgba(255,255,255,.045) 100%)!important;
+  border:1px solid rgba(230,244,255,.28)!important;
+  -webkit-backdrop-filter:blur(13px) saturate(220%) contrast(108%)!important;
+  backdrop-filter:blur(13px) saturate(220%) contrast(108%)!important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.42),
+    inset 1px 0 0 rgba(255,255,255,.12),
+    inset 0 -1px 0 rgba(255,255,255,.13),
+    0 8px 22px rgba(0,0,0,.13),
+    0 1px 0 rgba(255,255,255,.08)!important;
+}
+.topbar,.panel,.player-card,.mobile-nav,.stat-card{position:relative;isolation:isolate;overflow:hidden}
+.topbar:before,.panel:before,.player-card:before,.mobile-nav:before,.stat-card:before{
+  content:"";position:absolute;inset:1px;border-radius:inherit;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(118deg,rgba(255,255,255,.24),transparent 17%,transparent 66%,rgba(255,255,255,.075)),
+    radial-gradient(ellipse at 14% 0%,rgba(255,255,255,.12),transparent 38%);
+  opacity:.78;
+}
+.topbar:after,.panel:after,.player-card:after,.mobile-nav:after,.stat-card:after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.055),inset 0 -12px 24px rgba(255,255,255,.018);
+}
+.topbar>* ,.panel>* ,.player-card>* ,.mobile-nav>* ,.stat-card>*{position:relative;z-index:1}
+.panel,.player-card{border-radius:24px!important}
+.stat-card{
+  background:
+    radial-gradient(circle at 28% 18%,rgba(255,255,255,.105),rgba(255,255,255,.012) 45%,rgba(255,255,255,.004) 76%)!important;
+  border-radius:50%!important;
+}
+.rank-orb{
+  background:
+    radial-gradient(circle at 27% 20%,rgba(255,255,255,.42),rgba(255,255,255,.075) 25%,rgba(var(--accent-rgb),.045) 58%,rgba(255,255,255,.012) 78%)!important;
+  border:1px solid rgba(239,248,255,.48)!important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.55),
+    inset 0 -9px 16px rgba(0,0,0,.12),
+    0 0 0 3px rgba(255,255,255,.035),
+    0 9px 24px rgba(0,0,0,.16),
+    0 0 26px rgba(var(--accent-rgb),.15)!important;
+}
+.mobile-nav{
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.012) 55%,rgba(255,255,255,.035))!important;
+  border-color:rgba(237,247,255,.36)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(230%)!important;
+  backdrop-filter:blur(18px) saturate(230%)!important;
+}
+.mobile-nav button span{
+  background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.012))!important;
+  border:1px solid rgba(242,249,255,.25)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 5px 12px rgba(0,0,0,.10)!important;
+}
+.mobile-nav button.active span{
+  background:linear-gradient(145deg,rgba(255,255,255,.28),rgba(var(--accent-rgb),.10) 48%,rgba(255,255,255,.025))!important;
+  border-color:rgba(245,250,255,.48)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 0 18px rgba(var(--accent-rgb),.17)!important;
+}
+button:not(.mobile-nav button):hover{transform:translateY(-1px);filter:brightness(1.13)}
+input,select,textarea{
+  background:rgba(225,240,255,.025)!important;
+  border:1px solid rgba(231,244,255,.25)!important;
+  -webkit-backdrop-filter:blur(12px) saturate(200%)!important;
+  backdrop-filter:blur(12px) saturate(200%)!important;
+}
+
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><img src="./icon.svg" alt="VESPERA"><div class="brand-copy"><strong>VESPERA</strong><small>YOUR PERSONAL SYSTEM</small></div></div>
+    <div class="top-actions">
+      <div class="notification-wrap">
+        <button class="icon-btn" id="notificationToggle" type="button" aria-label="Notifications"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><span class="notification-count" id="notificationCount" hidden>0</span></button>
+        <section class="notification-panel" id="notificationPanel" hidden>
+          <div class="notification-head"><h3 data-i18n="notificationsTitle">الإشعارات</h3><button class="icon-btn" id="notificationClose" type="button" aria-label="Close">×</button></div>
+          <div class="notification-actions"><button class="chip-btn" id="notificationMarkAll" type="button" data-i18n="markAllRead">تحديد الكل كمقروء</button><button class="chip-btn" id="notificationClear" type="button" data-i18n="clearNotifications">مسح الإشعارات</button></div>
+          <div class="notification-list" id="notificationList"></div>
+        </section>
+      </div>
+      <button class="icon-btn" id="themeToggle" type="button" title="Change theme" aria-label="Change theme">◐</button>
+      <button class="icon-btn language-action" id="langToggle" type="button" title="Language">ع</button>
+      <button class="icon-btn" id="quickAdd" type="button" title="Quick add">＋</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="page-home">
+      <div class="welcome-row"><div><div class="eyebrow">YOUR DAILY SPACE</div><h1 data-i18n="welcome">مساحتك اليومية</h1><p data-i18n="homeIntro">تابع تقدمك اليومي وركّز على الخطوة التالية.</p></div><div class="date-label" id="todayLabel"></div></div>
+      <section class="player-card">
+        <div class="player-main">
+          <div class="rank-orb" id="rankBadge">E</div>
+          <div class="rank-info"><small data-i18n="playerRank">رتبة اللاعب</small><h2><span id="rankName" class="accent">E</span> RANK · <span id="playerLevel">01</span> LVL</h2><p id="rankCaption">بداية رحلتك — كل خطوة تُحسب.</p></div>
+          <div class="level-pill"><small>LEVEL</small><strong id="playerLevelMirror">01</strong></div>
+        </div>
+        <div class="progress-line"><span id="rankProgress"></span></div>
+        <div class="progress-meta"><span>RANK PROGRESS</span><b id="rankProgressText">0 / 100 XP</b></div>
+        <div class="progress-line" style="height:4px;margin-top:12px"><span id="levelProgress"></span></div>
+        <div class="progress-meta"><span>LEVEL PROGRESS</span><b id="levelProgressText">0 / 100 XP</b></div>
+      </section>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label" data-i18n="totalXP">إجمالي XP</div><div class="stat-value accent" id="statXP">0</div><div class="stat-sub" data-i18n="earnedXP">نقاط مكتسبة</div></div>
+        <div class="stat-card"><div class="stat-label" data-i18n="completedTasks">مهام مكتملة</div><div class="stat-value" id="statDone">0</div><div class="stat-sub" data-i18n="allTime">منذ البداية</div></div>
+        <div class="stat-card"><div class="stat-label" data-i18n="activityMinutes">دقائق النشاط</div><div class="stat-value" id="statMinutes">0</div><div class="stat-sub" data-i18n="movementLogged">حركة مسجلة</div></div>
+      </div>
+      <div class="home-layout">
+        <section>
+          <div class="section-head"><div><div class="section-code">TODAY</div><h3 data-i18n="todayFocus">تركيز اليوم</h3><p data-i18n="todayFocusHint">المهام التي تنتظرك اليوم.</p></div><button class="chip-btn" data-go="tasks" data-i18n="viewAll">عرض الكل</button></div>
+          <div class="panel"><div class="task-list" id="homeTasks"></div><div class="progress-meta"><span data-i18n="todayTasks">مهام اليوم</span><b id="statToday">0/0</b></div></div>
+        </section>
+        <aside class="home-side">
+          <section><div class="section-head"><div><div class="section-code">VESPERA HELPER</div><h3 data-i18n="localAssistant">المساعد المحلي</h3></div><button class="chip-btn" data-go="assistant" data-i18n="openAssistant">افتح المساعد</button></div><div class="panel"><div class="assistant-bubble" id="homeAdvice"></div></div></section>
+          <section class="panel"><div class="section-head"><div><h3 data-i18n="activitySummary">ملخص النشاط</h3><p data-i18n="lastSevenDays">آخر سبعة أيام.</p></div></div><div class="activity-mini"><strong id="homeWeekMinutes">0</strong><span data-i18n="minutesTotal">دقيقة نشاط إجمالًا</span></div><button class="soft-btn" data-go="fitness" style="margin-top:12px" data-i18n="goFitness">اذهب للنشاط</button></section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page" id="page-tasks">
+      <div class="page-title"><div class="eyebrow">TASKS / DAILY EXECUTION</div><h2 data-i18n="navTasks">المهام اليومية</h2><p data-i18n="tasksIntro">أنشئ مهامك أو اختر عدة مهام جاهزة دفعة واحدة.</p></div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="createTask">إضافة مهمة جديدة</h3><p data-i18n="createTaskHint">المهام المكتملة تمنحك نقاط XP.</p></div></div>
+        <form id="taskForm"><div class="form-grid">
+          <div class="field"><label for="taskTitle" data-i18n="taskName">اسم المهمة</label><input class="input" id="taskTitle" required maxlength="90" placeholder="مثال: مراجعة درس الرياضيات"></div>
+          <div class="field"><label for="taskCategory" data-i18n="taskCategory">التصنيف</label><select class="select" id="taskCategory"><option value="personal" data-i18n="personal">شخصي</option><option value="study" data-i18n="study">دراسة</option><option value="home" data-i18n="home">منزل</option></select></div>
+          <div class="field"><label for="taskDate" data-i18n="taskDate">التاريخ</label><input class="input" id="taskDate" type="date" required></div>
+          <div class="field"><label for="taskDuration" data-i18n="duration">المدة بالدقائق</label><input class="input" id="taskDuration" type="number" min="1" max="600" value="25"></div>
+        </div><div class="field" style="margin-top:11px"><label for="taskDescription" data-i18n="description">وصف اختياري</label><textarea class="textarea" id="taskDescription" maxlength="300"></textarea></div><div class="form-actions"><button class="primary-btn" type="submit" data-i18n="addTask">إضافة المهمة</button><button class="soft-btn" type="reset" data-i18n="clear">مسح</button></div></form>
+        <details><summary data-i18n="readyLibrary">مكتبة المهام الجاهزة</summary><span class="pill" id="catalogTotal">0</span><p class="note" data-i18n="readyLibraryHint">اختر فئة، حدّد عدة عناصر، ثم أضفها مرة واحدة.</p>
+          <div class="form-grid" style="margin:12px 0"><div class="field"><label for="catalogCategory" data-i18n="filterCategory">الفئة</label><select class="select" id="catalogCategory"><option value="all" data-i18n="allCategories">كل الفئات</option><option value="study" data-i18n="study">دراسة</option><option value="home" data-i18n="home">منزل</option><option value="personal" data-i18n="personal">شخصي</option></select></div><div class="field"><label for="catalogSearch" data-i18n="search">بحث</label><input class="input" id="catalogSearch" placeholder="ابحث عن مهمة..."></div></div>
+          <div class="toolbar"><button class="chip-btn" id="selectVisible" type="button" data-i18n="selectVisible">تحديد الظاهر</button><button class="chip-btn" id="clearSelected" type="button" data-i18n="clearSelection">إلغاء التحديد</button><span class="note" id="selectedCount">0 selected</span></div><div class="catalog-grid" id="taskCatalog"></div><div class="form-actions"><button class="primary-btn" id="addSelectedTasks" type="button" data-i18n="addSelected">إضافة المهام المحددة</button></div>
+        </details>
+      </div>
+      <div class="section-head"><div><h3 data-i18n="myTasks">قائمة مهامي</h3><p data-i18n="myTasksHint">يمكنك إنجاز المهمة أو حذفها.</p></div><select class="select" id="taskFilter" style="width:auto"><option value="all" data-i18n="filterAll">الكل</option><option value="today" data-i18n="filterToday">اليوم</option><option value="open" data-i18n="filterOpen">غير مكتملة</option><option value="done" data-i18n="filterDone">مكتملة</option></select></div>
+      <div class="panel"><div class="task-list" id="taskList"></div></div>
+    </section>
+
+    <section class="page" id="page-fitness">
+      <div class="page-title"><div class="eyebrow">ACTIVITY / MOVEMENT LOG</div><h2 data-i18n="navFitness">النشاط البدني</h2><p data-i18n="fitnessIntro">سجّل الحركة التي تستمتع بها وتابع نشاطك بمرونة.</p></div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="playerData">بيانات اللاعب</h3><p data-i18n="optionalData">بيانات اختيارية تُحفظ على جهازك.</p></div></div><div class="grid profile-grid">
+        <div class="field"><label for="height" data-i18n="height">الطول (سم)</label><input class="input" type="number" id="height" min="80" max="230" placeholder="170"></div><div class="field"><label for="weight" data-i18n="weight">الوزن (كجم)</label><input class="input" type="number" id="weight" min="20" max="250" placeholder="60"></div><div class="field"><label for="age" data-i18n="age">العمر</label><input class="input" type="number" id="age" min="8" max="100" placeholder="16"></div><div class="bmi-box"><span class="stat-label" data-i18n="bmi">BMI مؤشر كتلة الجسم</span><strong id="bmiValue">—</strong></div>
+      </div><div class="form-actions"><button class="primary-btn" id="saveProfile" data-i18n="saveData">حفظ البيانات</button></div><p class="note" data-i18n="bmiNote">مؤشر BMI حساب تقريبي فقط وليس تشخيصًا أو تقييمًا للجسم، ولا يؤثر على نقاطك أو رتبتك. تفسيره للمراهقين يعتمد على العمر والنمو، لذلك لا تستخدم تصنيفات البالغين.</p></div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="logActivity">تسجيل نشاط</h3><p data-i18n="logHint">سجّل أي حركة أو رياضة قمت بها.</p></div></div><form id="activityForm"><div class="form-grid">
+        <div class="field"><label for="activityName" data-i18n="activityName">النشاط</label><input class="input" id="activityName" required maxlength="90" placeholder="مشي، كرة قدم، تمارين منزلية..."></div><div class="field"><label for="activityType" data-i18n="activityCategory">التصنيف</label><select class="select" id="activityType"><option value="strength" data-i18n="strength">مقاومة</option><option value="cardio" data-i18n="cardio">كارديو</option><option value="walk" data-i18n="walking">مشي</option><option value="sport" data-i18n="sports">رياضة</option><option value="mobility" data-i18n="mobility">مرونة</option><option value="other" data-i18n="other">أخرى</option></select></div><div class="field"><label for="activityDate" data-i18n="date">التاريخ</label><input class="input" type="date" id="activityDate" required></div><div class="field"><label for="activityMinutes" data-i18n="minutes">المدة بالدقائق</label><input class="input" type="number" id="activityMinutes" min="1" max="600" value="20" required></div>
+      </div><div class="field" style="margin-top:11px"><label for="activityNotes" data-i18n="notes">ملاحظات اختيارية</label><textarea class="textarea" id="activityNotes" maxlength="300"></textarea></div><div class="form-actions"><button class="primary-btn" type="submit" data-i18n="saveActivity">حفظ النشاط</button></div></form>
+        <details><summary data-i18n="exerciseLibrary">مكتبة الرياضة والتمارين</summary><p class="note" data-i18n="exerciseHint">الجيم والمنزل والكارديو والرياضات والمرونة.</p><div class="form-grid" style="margin:12px 0"><div class="field"><label for="exerciseCategory" data-i18n="exerciseType">نوع النشاط</label><select class="select" id="exerciseCategory"><option value="all" data-i18n="allActivities">كل الأنشطة</option><option value="gym" data-i18n="gym">الجيم</option><option value="home" data-i18n="homeWorkout">المنزل</option><option value="cardio" data-i18n="cardio">كارديو</option><option value="sports" data-i18n="sports">رياضات</option><option value="mobility" data-i18n="mobility">مرونة وحركة</option></select></div><div class="field"><label for="exerciseSearch" data-i18n="search">بحث</label><input class="input" id="exerciseSearch" placeholder="ابحث عن نشاط..."></div></div><div class="exercise-grid" id="exerciseCatalog"></div><p class="note" data-i18n="exerciseSafety">اختَر نشاطًا مناسبًا لقدرتك، وابدأ بهدوء. في الجيم اطلب إرشاد مدرب مؤهل، وتوقف عند الألم أو الدوار. لا تحتاج إلى مقارنة نفسك بأحد.</p></details>
+      </div>
+      <div class="two-col"><div class="panel"><div class="section-head"><div><h3 data-i18n="lastWeek">آخر 7 أيام</h3><p data-i18n="minutesByDay">دقائق النشاط حسب اليوم.</p></div></div><div class="week-bars" id="weekChart"></div></div><div class="panel"><div class="section-head"><div><h3 data-i18n="activitySummary">ملخص النشاط</h3><p data-i18n="lastSevenDays">آخر سبعة أيام.</p></div></div><div class="stat-value accent" id="weekMinutes">0</div><div class="stat-sub" data-i18n="minutesTotal">دقيقة نشاط إجمالًا</div><div class="progress-line"><span id="weekProgress"></span></div></div></div>
+      <div class="section-head"><div><h3 data-i18n="activityHistory">سجل النشاط</h3><p data-i18n="historyHint">السجلات محفوظة على جهازك ويمكن حذفها.</p></div></div><div class="panel"><div id="activityHistory"></div></div>
+    </section>
+
+    <section class="page" id="page-assistant">
+      <div class="page-title"><div class="eyebrow">LOCAL HELPER / NO CLOUD</div><h2 data-i18n="navAssistant">المساعد المحلي</h2><p data-i18n="assistantPageIntro">مساعد بسيط يعمل داخل التطبيق دون إرسال بياناتك إلى الإنترنت.</p></div>
+      <div class="panel"><div class="assistant-bubble" id="assistantAdvice"></div><div class="form-actions"><button class="primary-btn" id="refreshAdvice" data-i18n="newAdvice">اقتراح جديد</button><button class="soft-btn" data-go="tasks" data-i18n="goTasks">اذهب للمهام</button><button class="soft-btn" data-go="fitness" data-i18n="goFitness">اذهب للنشاط</button></div></div>
+      <div class="panel assistant-workspace"><div class="section-head"><div><h3 data-i18n="assistantChatTitle">تحدث مع مساعد VESPERA</h3><p data-i18n="assistantChatHint">اكتب طلبك بلغة بسيطة، وسأساعدك في تنظيم بيانات التطبيق.</p></div><span class="assistant-local-tag">LOCAL</span></div>
+        <div class="assistant-quick-actions"><button class="chip-btn" data-assistant-action="today" data-i18n="assistantQuickToday">رتّب مهام اليوم</button><button class="chip-btn" data-assistant-action="overdue" data-i18n="assistantQuickOverdue">اعرض المتأخرة</button><button class="chip-btn" data-assistant-action="next" data-i18n="assistantQuickNext">المهمة التالية</button><button class="chip-btn" data-assistant-action="help" data-i18n="assistantQuickHelp">ماذا تستطيع أن تفعل؟</button></div>
+        <div class="assistant-chat-log" id="assistantChatLog" aria-live="polite"></div><form class="assistant-chat-form" id="assistantChatForm"><input class="input" id="assistantInput" maxlength="240" autocomplete="off" placeholder="مثال: رتّب مهامي المختارة أو نظّم يومي"><button class="primary-btn" type="submit" data-i18n="assistantSend">إرسال</button></form><p class="note" data-i18n="assistantLocalNote">المساعد يعمل بأوامر ذكية محلية وقواعد محددة، ولا يستخدم ذكاءً اصطناعيًا سحابيًا.</p>
+      </div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="assistantPickTitle">اختيار المهام للمساعد</h3><p data-i18n="assistantPickHint">حدّد المهام التي تريد ترتيبها، ثم اطلب منه تنظيمها.</p></div><span class="pill" id="assistantSelectedCount">0</span></div><div class="toolbar"><button class="chip-btn" id="assistantSelectToday" data-i18n="assistantSelectToday">تحديد مهام اليوم</button><button class="chip-btn" id="assistantSelectAll" data-i18n="assistantSelectAll">تحديد كل غير المكتمل</button><button class="chip-btn" id="assistantClearSelection" data-i18n="assistantClearSelection">إلغاء التحديد</button></div><div class="assistant-task-picker" id="assistantTaskPicker"></div></div>
+      <div class="panel"><h3 style="font-size:13px" data-i18n="assistantHow">كيف يعمل؟</h3><p class="note" data-i18n="assistantHowText">يعتمد على قواعد محلية بسيطة وبيانات المهام والنشاط المخزنة على جهازك. لا يوجد اتصال بخدمة ذكاء اصطناعي سحابية، ولا يتم إرسال معلوماتك إلى أي خادم.</p></div>
+    </section>
+
+    
+<section class="page" id="page-prayer">
+  <div class="page-title"><div class="eyebrow">DAILY RHYTHM / IBADAH</div><h2>الصلاة والأذكار</h2><p>تابع مواقيت الصلاة، وسجّل إنجازك اليومي، وخلي وردك بسيطًا ومستمرًا.</p></div>
+  <div class="panel prayer-hero">
+    <div class="prayer-hero-top"><div><span class="section-code">NEXT PRAYER</span><h3 id="nextPrayerName">الفجر</h3><p id="prayerDateLabel">مواقيت اليوم</p></div><div class="next-count"><strong id="prayerCountdown">--:--:--</strong><small>الوقت المتبقي</small></div></div>
+    <div class="prayer-progress"><span id="prayerProgressBar"></span></div>
+    <div class="prayer-progress-meta"><span id="prayerDoneLabel">0 من 5 صلوات</span><strong id="prayerPercent">0%</strong></div>
+  </div>
+  <div class="panel">
+    <div class="section-head"><div><h3>مواقيت الصلاة</h3><p>حساب محلي على جهازك، بدون API أو إرسال موقعك لأي خادم.</p></div><span class="pill" id="prayerCityLabel">طنطا</span></div>
+    <div class="prayer-times-grid" id="prayerTimesGrid"></div>
+    <div class="note">المواقيت تقديرية حسب إحداثيات المدينة وطريقة الحساب المصرية (الفجر 19.5° والعشاء 17.5°). راجع تقويم الجهة الرسمية في منطقتك عند الحاجة.</div>
+  </div>
+  <div class="panel">
+    <div class="section-head"><div><h3>متابعة الصلوات</h3><p>علّم الصلاة بعد أدائها، وسجل اليوم محفوظ تلقائيًا.</p></div></div>
+    <div class="prayer-check-grid" id="prayerCheckGrid"></div>
+    <div class="prayer-history"><h4>سجل آخر 7 أيام</h4><div id="prayerHistory"></div></div>
+  </div>
+  <div class="panel">
+    <div class="section-head"><div><h3>الأذكار</h3><p>ورد خفيف قابل للعد، وتُحفظ أعدادك على هذا الجهاز.</p></div></div>
+    <div class="dhikr-tabs"><button class="chip-btn selected" data-dhikr-tab="morning">أذكار الصباح</button><button class="chip-btn" data-dhikr-tab="evening">أذكار المساء</button><button class="chip-btn" data-dhikr-tab="after">بعد الصلاة</button></div>
+    <div id="dhikrList" class="dhikr-list"></div>
+  </div>
+  <div class="panel tasbeeh-panel">
+    <div class="section-head"><div><h3>السبحة الإلكترونية</h3><p>عداد بسيط للتسبيح والاستغفار.</p></div></div>
+    <div class="tasbeeh-counter"><strong id="tasbeehCount">0</strong><span>تسبيحة</span></div>
+    <div class="tasbeeh-actions"><button class="primary-btn" id="tasbeehAdd">+ تسبيحة</button><button class="soft-btn" id="tasbeehReset">إعادة العداد</button></div>
+  </div>
+  <div class="panel">
+    <div class="section-head"><div><h3>إعدادات الموقع والحساب</h3><p>عدّل المدينة والإحداثيات وفارق التوقيت للحصول على مواقيت أقرب لمدينتك.</p></div></div>
+    <div class="form-grid prayer-settings">
+      <label>المدينة<input class="input" id="prayerCity" value="طنطا"></label>
+      <label>خط العرض<input class="input" id="prayerLat" type="number" step="0.0001" value="30.7865"></label>
+      <label>خط الطول<input class="input" id="prayerLon" type="number" step="0.0001" value="31.0004"></label>
+      <label>فارق التوقيت عن UTC<input class="input" id="prayerTZ" type="number" step="0.5" value="2"></label>
+    </div>
+    <div class="form-actions"><button class="primary-btn" id="savePrayerSettings">حفظ الإعدادات</button></div>
+  </div>
+</section>
+
+<section class="page" id="page-settings">
+      <div class="page-title"><div class="eyebrow">SYSTEM / PREFERENCES</div><h2 data-i18n="navSettings">الإعدادات</h2><p data-i18n="settingsIntro">تحكم في مظهر التطبيق وبياناتك.</p></div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="appearance">المظهر</h3><p data-i18n="appearanceHint">اختار لون الواجهة بالكامل من مجموعة ألوان.</p></div></div>
+        <div class="theme-grid">
+          <button class="theme-swatch" id="blueTheme" data-theme-pick="blue" style="--swatch:#75b8ff"><span class="swatch-dot"></span><span data-i18n="blue">أزرق</span></button>
+          <button class="theme-swatch" id="pinkTheme" data-theme-pick="pink" style="--swatch:#f28bc9"><span class="swatch-dot"></span><span data-i18n="pink">وردي</span></button>
+          <button class="theme-swatch" data-theme-pick="violet" style="--swatch:#b49aff"><span class="swatch-dot"></span><span data-i18n="violet">بنفسجي</span></button>
+          <button class="theme-swatch" data-theme-pick="cyan" style="--swatch:#72e2ec"><span class="swatch-dot"></span><span data-i18n="cyan">سماوي</span></button>
+          <button class="theme-swatch" data-theme-pick="emerald" style="--swatch:#75d9ad"><span class="swatch-dot"></span><span data-i18n="emerald">أخضر</span></button>
+          <button class="theme-swatch" data-theme-pick="amber" style="--swatch:#f2c777"><span class="swatch-dot"></span><span data-i18n="amber">ذهبي</span></button>
+          <button class="theme-swatch" data-theme-pick="burgundy" style="--swatch:#b94b68"><span class="swatch-dot"></span><span>برغندي</span></button>
+          <button class="theme-swatch" data-theme-pick="silver" style="--swatch:#c6d2df"><span class="swatch-dot"></span><span>فضي</span></button>
+          <button class="theme-swatch" data-theme-pick="ice" style="--swatch:#a5dcff"><span class="swatch-dot"></span><span>جليدي</span></button>
+        </div><div class="form-actions"><button class="soft-btn" id="settingsLang" data-i18n="switchLanguage">تغيير اللغة</button></div>
+      </div>
+      <div class="panel"><div class="settings-row"><div><h3 data-i18n="notificationsTitle">الإشعارات</h3><p data-i18n="notificationsHint">إشعارات داخل التطبيق، مع إمكانية تفعيل إشعارات المتصفح.</p><p class="note" id="notificationPermission"></p></div><button class="primary-btn" id="enableNotifications" type="button" data-i18n="enableNotifications">تفعيل إشعارات الجهاز</button></div></div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="backup">النسخ الاحتياطي</h3><p data-i18n="backupHint">صدّر نسخة من بياناتك أو استورد نسخة سابقة.</p></div></div><div class="toolbar"><button class="primary-btn" id="exportData" data-i18n="export">تصدير البيانات</button><label class="soft-btn" for="importFile" data-i18n="import">استيراد نسخة</label><input class="hidden" id="importFile" type="file" accept="application/json"></div></div>
+      <div class="panel"><div class="section-head"><div><h3 data-i18n="privacy">الخصوصية والتخزين</h3><p data-i18n="privacyText">يتم حفظ البيانات محليًا في متصفحك باستخدام التخزين المحلي. مسح بيانات المتصفح قد يؤدي إلى فقدانها؛ احتفظ بنسخة احتياطية.</p></div></div><button class="danger-btn" id="resetData" data-i18n="reset">إعادة ضبط بيانات التطبيق</button></div>
+    </section>
+  </main>
+  <div class="footer">VESPERA · ORBITAL GLASS · LOCAL FIRST · NO LOGIN</div>
+</div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Main navigation">
+  <button class="active" data-page="home"><span>⌂</span><b data-i18n="navHome">الرئيسية</b></button>
+  <button data-page="tasks"><span>▤</span><b data-i18n="navTasks">المهام</b></button>
+  <button data-page="fitness"><span>◉</span><b data-i18n="navFitness">النشاط</b></button>
+  <button data-page="assistant"><span>✧</span><b data-i18n="navAssistant">المساعد</b></button>
+  <button data-page="prayer"><span>☾</span><b>الصلاة</b></button>
+  <button data-page="settings"><span>⚙</span><b data-i18n="navSettings">الإعدادات</b></button>
+</nav>
+<div class="toast" id="toast"></div>
+<script>
+
+"use strict";
+const $=id=>document.getElementById(id);
+const STORAGE_KEY="vespera_v5_data";
+const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const safeNumber=(v,min,max)=>{const n=Number(v);return Number.isFinite(n)?Math.min(max,Math.max(min,n)):0};
+const DEFAULT={version:7,settings:{language:"ar",theme:"blue",systemNotifications:false},player:{xp:0,completed:0},tasks:[],notifications:[],fitness:{profile:{height:"",weight:"",age:""},logs:[]},prayer:{city:"طنطا",lat:30.7865,lon:31.0004,tz:2,records:{},tasbeeh:0,dhikr:{morning:{},evening:{},after:{}}}};
+function loadData(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return structuredClone(DEFAULT);const o=JSON.parse(raw);return {...structuredClone(DEFAULT),...o,settings:{...DEFAULT.settings,...o.settings},player:{...DEFAULT.player,...o.player},fitness:{...DEFAULT.fitness,...o.fitness,profile:{...DEFAULT.fitness.profile,...(o.fitness?.profile||{})},logs:Array.isArray(o.fitness?.logs)?o.fitness.logs:[]},tasks:Array.isArray(o.tasks)?o.tasks:[],notifications:Array.isArray(o.notifications)?o.notifications:[],prayer:{...DEFAULT.prayer,...(o.prayer||{}),records:(o.prayer&&o.prayer.records)||{},dhikr:{...DEFAULT.prayer.dhikr,...((o.prayer&&o.prayer.dhikr)||{})}}}}catch(e){return structuredClone(DEFAULT)}}
+let data=loadData(),selectedCatalog=new Set(),currentPage="home";
+const I18N={
+ar:{
+workspace:"مساحة العمل",navHome:"الرئيسية",navTasks:"المهام اليومية",navFitness:"النشاط البدني",navAssistant:"المساعد المحلي",navSettings:"الإعدادات",localNote:"بياناتك محفوظة على هذا الجهاز فقط. لا يوجد تسجيل دخول أو اتصال بخادم.",topTitle:"ابنِ نظامك، خطوة بخطوة.",welcome:"مساحتك اليومية.",homeIntro:"تابع تقدمك اليومي وركّز على الخطوة التالية.",totalXP:"إجمالي XP",earnedXP:"نقاط مكتسبة",completedTasks:"مهام مكتملة",allTime:"منذ البداية",activityMinutes:"دقائق النشاط",movementLogged:"حركة مسجلة",todayTasks:"مهام اليوم",dailyProgress:"التقدم اليومي",playerRank:"رتبة اللاعب",todayFocus:"تركيز اليوم",todayFocusHint:"المهام التي تنتظرك اليوم.",viewAll:"عرض الكل",localAssistant:"المساعد المحلي",assistantSubtitle:"اقتراحات بسيطة بناءً على بياناتك.",openAssistant:"افتح المساعد",tasksIntro:"أنشئ مهامك أو اختر عدة مهام جاهزة دفعة واحدة.",createTask:"إضافة مهمة جديدة",createTaskHint:"المهام المكتملة تمنحك نقاط XP.",taskName:"اسم المهمة",taskCategory:"التصنيف",personal:"شخصي",study:"دراسة",home:"منزل",taskDate:"التاريخ",duration:"المدة بالدقائق",description:"وصف اختياري",addTask:"إضافة المهمة",clear:"مسح",readyLibrary:"مكتبة المهام الجاهزة",readyLibraryHint:"اختر فئة، حدّد عدة عناصر، ثم أضفها مرة واحدة.",filterCategory:"الفئة",allCategories:"كل الفئات",search:"بحث",selectVisible:"تحديد الظاهر",clearSelection:"إلغاء التحديد",addSelected:"إضافة المهام المحددة",myTasks:"قائمة مهامي",myTasksHint:"يمكنك إنجاز المهمة أو حذفها.",filterAll:"الكل",filterToday:"اليوم",filterOpen:"غير مكتملة",filterDone:"مكتملة",fitnessIntro:"سجّل الحركة التي تستمتع بها وتابع نشاطك بمرونة.",playerData:"بيانات اللاعب",optionalData:"بيانات اختيارية تُحفظ على جهازك.",height:"الطول (سم)",weight:"الوزن (كجم)",age:"العمر",bmi:"BMI مؤشر كتلة الجسم",saveData:"حفظ البيانات",bmiNote:"مؤشر BMI حساب تقريبي فقط وليس تشخيصًا أو تقييمًا للجسم، ولا يؤثر على نقاطك أو رتبتك. تفسيره للمراهقين يعتمد على العمر والنمو، لذلك لا تستخدم تصنيفات البالغين.",exerciseLibrary:"مكتبة الرياضة والتمارين",exerciseHint:"الجيم والمنزل والكارديو والرياضات والمرونة.",exerciseType:"نوع النشاط",allActivities:"كل الأنشطة",gym:"الجيم",homeWorkout:"المنزل",cardio:"كارديو",sports:"رياضات",mobility:"مرونة وحركة",exerciseSafety:"اختَر نشاطًا مناسبًا لقدرتك، وابدأ بهدوء. في الجيم اطلب إرشاد مدرب مؤهل، وتوقف عند الألم أو الدوار. لا تحتاج إلى مقارنة نفسك بأحد.",logActivity:"تسجيل نشاط",logHint:"سجّل أي حركة أو رياضة قمت بها.",activityName:"النشاط",activityCategory:"التصنيف",date:"التاريخ",minutes:"المدة بالدقائق",notes:"ملاحظات اختيارية",saveActivity:"حفظ النشاط",lastWeek:"آخر 7 أيام",minutesByDay:"دقائق النشاط حسب اليوم.",activitySummary:"ملخص النشاط",lastSevenDays:"آخر سبعة أيام.",minutesTotal:"دقيقة نشاط إجمالًا",activityHistory:"سجل النشاط",historyHint:"السجلات محفوظة على جهازك ويمكن حذفها.",assistantPageIntro:"مساعد بسيط يعمل داخل التطبيق دون إرسال بياناتك إلى الإنترنت.",newAdvice:"اقتراح جديد",goTasks:"اذهب للمهام",goFitness:"اذهب للنشاط",assistantHow:"كيف يعمل؟",assistantHowText:"يعتمد على قواعد محلية بسيطة وبيانات المهام والنشاط المخزنة على جهازك. لا يوجد اتصال بخدمة ذكاء اصطناعي سحابية، ولا يتم إرسال معلوماتك إلى أي خادم.",settingsIntro:"تحكم في مظهر التطبيق وبياناتك.",appearance:"المظهر",appearanceHint:"اختار لون الواجهة بالكامل من مجموعة ألوان.",blue:"أزرق",pink:"وردي",violet:"بنفسجي",cyan:"سماوي",emerald:"أخضر",amber:"ذهبي",notificationsTitle:"الإشعارات",notificationsHint:"إشعارات داخل التطبيق، مع إمكانية تفعيل إشعارات المتصفح.",enableNotifications:"تفعيل إشعارات الجهاز",notificationPermissionOn:"إشعارات الجهاز مفعّلة",notificationPermissionOff:"إشعارات الجهاز غير مفعّلة",notificationsEmpty:"لا توجد إشعارات حتى الآن.",markAllRead:"تحديد الكل كمقروء",clearNotifications:"مسح الإشعارات",switchLanguage:"تغيير اللغة",backup:"النسخ الاحتياطي",backupHint:"صدّر نسخة من بياناتك أو استورد نسخة سابقة.",export:"تصدير البيانات",import:"استيراد نسخة",privacy:"الخصوصية والتخزين",privacyText:"يتم حفظ البيانات محليًا في متصفحك باستخدام التخزين المحلي. مسح بيانات المتصفح قد يؤدي إلى فقدانها؛ احتفظ بنسخة احتياطية.",reset:"إعادة ضبط بيانات التطبيق",taskAdded:"تمت إضافة المهمة.",activitySaved:"تم حفظ النشاط.",profileSaved:"تم حفظ البيانات.",selectAtLeast:"حدّد مهمة واحدة على الأقل.",selectedAdded:"تمت إضافة المهام المحددة.",delete:"حذف",noTasks:"لا توجد مهام هنا بعد. أضف مهمة أو اختر من المكتبة.",noActivities:"لا توجد أنشطة مسجلة بعد.",rankStart:"بداية رحلتك — كل خطوة تُحسب.",rankNext:"المستوى التالي",rankMax:"وصلت إلى أعلى رتبة متاحة في هذا الإصدار.",activity:"نشاط",mins:"دقيقة",confirmReset:"هل تريد حذف كل بيانات VESPERA المحفوظة على هذا الجهاز؟",resetDone:"تمت إعادة ضبط البيانات.",importDone:"تم استيراد البيانات.",invalidFile:"ملف النسخة الاحتياطية غير صالح.",allTasks:"كل المهام",noCatalog:"لا توجد نتائج.",assistantNoTasks:"ابدأ بإضافة مهمة واحدة صغيرة وواضحة. تقسيم العمل إلى خطوات قصيرة يجعل البداية أسهل.",assistantTasks:"لديك {n} مهمة غير مكتملة. اختر واحدة فقط وابدأ بأول خطوة منها.",assistantDone:"أحسنت! أنجزت مهامك الحالية. خذ استراحة مناسبة أو خطط للخطوة التالية.",assistantMove:"سجّلت {n} دقيقة نشاط في آخر أسبوع. اختر حركة تستمتع بها وحافظ على وتيرة مريحة.",assistantStartMove:"يمكنك إضافة مشي مريح أو نشاط تحبه إلى السجل. الأهم الاستمرارية الممتعة لا الشدة.",today:"اليوم",strength:"مقاومة",walking:"مشي",other:"أخرى",
+assistantChatTitle:"تحدث مع مساعد VESPERA",assistantChatHint:"اكتب طلبك بلغة بسيطة، وسأساعدك في تنظيم بيانات التطبيق.",assistantQuickToday:"رتّب مهام اليوم",assistantQuickOverdue:"اعرض المتأخرة",assistantQuickNext:"المهمة التالية",assistantQuickHelp:"ماذا تستطيع أن تفعل؟",assistantSend:"إرسال",assistantLocalNote:"المساعد يعمل بأوامر ذكية محلية وقواعد محددة، ولا يستخدم ذكاءً اصطناعيًا سحابيًا.",assistantPickTitle:"اختيار المهام للمساعد",assistantPickHint:"حدّد المهام التي تريد ترتيبها، ثم اطلب منه تنظيمها.",assistantSelectToday:"تحديد مهام اليوم",assistantSelectAll:"تحديد كل غير المكتمل",assistantClearSelection:"إلغاء التحديد",assistantInputPlaceholder:"مثال: رتّب مهامي المختارة أو نظّم يومي"
+},
+en:{
+workspace:"WORKSPACE",navHome:"Home",navTasks:"Daily tasks",navFitness:"Fitness",navAssistant:"Local helper",navSettings:"Settings",localNote:"Your data stays on this device. No login or server connection.",topTitle:"Build your system, one step at a time.",welcome:"Your space for today.",homeIntro:"Track your daily progress and focus on the next step.",totalXP:"Total XP",earnedXP:"Earned points",completedTasks:"Completed tasks",allTime:"All time",activityMinutes:"Activity minutes",movementLogged:"Movement logged",todayTasks:"Today's tasks",dailyProgress:"Daily progress",playerRank:"Player rank",todayFocus:"Today's focus",todayFocusHint:"Tasks waiting for you today.",viewAll:"View all",localAssistant:"Local helper",assistantSubtitle:"Simple suggestions based on your data.",openAssistant:"Open helper",tasksIntro:"Create tasks or select several ready-made tasks at once.",createTask:"Create a task",createTaskHint:"Completed tasks award XP.",taskName:"Task name",taskCategory:"Category",personal:"Personal",study:"Study",home:"Home",taskDate:"Date",duration:"Duration in minutes",description:"Optional description",addTask:"Add task",clear:"Clear",readyLibrary:"Ready-made task library",readyLibraryHint:"Choose a category, select multiple items, then add them together.",filterCategory:"Category",allCategories:"All categories",search:"Search",selectVisible:"Select visible",clearSelection:"Clear selection",addSelected:"Add selected tasks",myTasks:"My tasks",myTasksHint:"Complete or delete your tasks.",filterAll:"All",filterToday:"Today",filterOpen:"Open",filterDone:"Done",fitnessIntro:"Log movement you enjoy and track activity flexibly.",playerData:"Player data",optionalData:"Optional details stored on your device.",height:"Height (cm)",weight:"Weight (kg)",age:"Age",bmi:"BMI",saveData:"Save details",bmiNote:"BMI is a rough calculation, not a diagnosis or body rating, and never affects XP or rank. For adolescents, interpretation depends on age and growth; adult categories do not apply.",exerciseLibrary:"Sports & exercise library",exerciseHint:"Gym, home, cardio, sports, and mobility.",exerciseType:"Activity type",allActivities:"All activities",gym:"Gym",homeWorkout:"Home",cardio:"Cardio",sports:"Sports",mobility:"Mobility",exerciseSafety:"Choose activity that suits you and start gently. Ask a qualified coach for gym guidance; stop if you feel pain or dizzy. You do not need to compare yourself with anyone.",logActivity:"Log activity",logHint:"Record any movement or sport you did.",activityName:"Activity",activityCategory:"Category",date:"Date",minutes:"Duration in minutes",notes:"Optional notes",saveActivity:"Save activity",lastWeek:"Last 7 days",minutesByDay:"Activity minutes by day.",activitySummary:"Activity summary",lastSevenDays:"The last seven days.",minutesTotal:"total activity minutes",activityHistory:"Activity history",historyHint:"Entries are stored locally and can be deleted.",assistantPageIntro:"A simple helper that works in the app without sending your data online.",newAdvice:"New suggestion",goTasks:"Go to tasks",goFitness:"Go to fitness",assistantHow:"How does it work?",assistantHowText:"It uses simple local rules and your tasks and activity stored on this device. It does not connect to a cloud AI service or send your information to a server.",settingsIntro:"Control the appearance and your data.",appearance:"Appearance",appearanceHint:"Choose a full-interface accent from the color palette.",blue:"Blue",pink:"Pink",violet:"Violet",cyan:"Cyan",emerald:"Emerald",amber:"Amber",notificationsTitle:"Notifications",notificationsHint:"In-app alerts, with optional browser notifications.",enableNotifications:"Enable device notifications",notificationPermissionOn:"Device notifications are enabled",notificationPermissionOff:"Device notifications are not enabled",notificationsEmpty:"No notifications yet.",markAllRead:"Mark all as read",clearNotifications:"Clear notifications",switchLanguage:"Switch language",backup:"Backup",backupHint:"Export your data or import a previous backup.",export:"Export data",import:"Import backup",privacy:"Privacy & storage",privacyText:"Your data is stored locally in this browser. Clearing browser data may erase it; keep a backup.",reset:"Reset app data",taskAdded:"Task added.",activitySaved:"Activity saved.",profileSaved:"Details saved.",selectAtLeast:"Select at least one task.",selectedAdded:"Selected tasks added.",delete:"Delete",noTasks:"Nothing here yet. Add a task or choose from the library.",noActivities:"No activities logged yet.",rankStart:"Your journey starts here — every step counts.",rankNext:"Next rank",rankMax:"You reached the highest rank in this version.",activity:"Activity",mins:"min",confirmReset:"Delete all VESPERA data stored on this device?",resetDone:"Data has been reset.",importDone:"Data imported.",invalidFile:"This backup file is invalid.",allTasks:"All tasks",noCatalog:"No matching results.",assistantNoTasks:"Start with one small, clear task. Breaking work into short steps can make starting easier.",assistantTasks:"You have {n} unfinished tasks. Pick just one and begin with its first step.",assistantDone:"Nice work! Your current tasks are complete. Take a suitable break or plan your next step.",assistantMove:"You logged {n} activity minutes in the last week. Choose movement you enjoy at a comfortable pace.",assistantStartMove:"You can log a comfortable walk or an activity you like. Enjoyable consistency matters more than intensity.",today:"Today",strength:"Strength",walking:"Walking",other:"Other",
+assistantChatTitle:"Chat with VESPERA",assistantChatHint:"Write a simple request and I’ll help organize information inside the app.",assistantQuickToday:"Plan today's tasks",assistantQuickOverdue:"Show overdue",assistantQuickNext:"Next task",assistantQuickHelp:"What can you do?",assistantSend:"Send",assistantLocalNote:"This helper uses local commands and fixed rules. It does not use cloud AI.",assistantPickTitle:"Choose tasks for the helper",assistantPickHint:"Select the tasks you want arranged, then ask the helper to organize them.",assistantSelectToday:"Select today's tasks",assistantSelectAll:"Select all unfinished",assistantClearSelection:"Clear selection",assistantInputPlaceholder:"Try: organize my selected tasks or plan my day"
+}};
+function t(key){return I18N[data.settings.language]?.[key]??I18N.en[key]??key}
+function trText(key){return t(key)}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));renderAll()}
+function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove("show"),2300)}
+function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function normalize(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه")}
+function localDateOffset(offset=0){const d=new Date();d.setDate(d.getDate()+offset);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
+function rankForXP(xp){const gates=[["E",0,100],["D",100,350],["C",350,800],["B",800,1600],["A",1600,3000],["S",3000,3000]];let current=gates[0];for(const g of gates){if(xp>=g[1])current=g}return {name:current[0],start:current[1],next:current[2],max:current[0]==="S"}}
+function calcXP(task){const mins=safeNumber(task.duration,1,600);return Math.max(5,Math.min(40,Math.round(8+mins/8)))}
+function addTask(task,silent=false){const xp=calcXP(task);const item={id:uid(),title:task.title,description:task.description||"",category:task.category||"personal",date:task.date||todayISO(),duration:task.duration||25,xp,done:false,created:Date.now(),completedAt:null,source:task.source||"custom"};data.tasks.unshift(item);if(!silent){pushNotification(data.settings.language==="ar"?"مهمة جديدة":"New task",item.title,"task");save();}}
+function setPage(page){currentPage=page;document.querySelectorAll(".page").forEach(el=>el.classList.toggle("active",el.id==="page-"+page));document.querySelectorAll("[data-page]").forEach(el=>el.classList.toggle("active",el.dataset.page===page));window.scrollTo({top:0,behavior:"smooth"});if(page==="assistant"){renderAdvice();renderAssistantTaskPicker();if(!assistantChatMessages.length)assistantWelcome()}}
+function categoryLabel(cat){return t(cat==="study"?"study":cat==="home"?"home":"personal")}
+function renderTasks(){
+ const filter=$("taskFilter").value;
+ const list=data.tasks.filter(x=>filter==="all"||(filter==="today"&&x.date===todayISO())||(filter==="open"&&!x.done)||(filter==="done"&&x.done));
+ $("taskList").innerHTML=list.length?list.map(task=>`<div class="task-row ${task.done?"done":""}"><input class="task-check" type="checkbox" data-complete="${task.id}" ${task.done?"checked":""} aria-label="complete"><div class="task-copy"><strong>${escapeHTML(task.title)}</strong><small>${escapeHTML(task.date)} · ${task.duration} ${t("mins")} · ${categoryLabel(task.category)} · ${task.xp} XP</small>${task.description?`<small>${escapeHTML(task.description)}</small>`:""}</div><button class="danger-btn" data-delete-task="${task.id}">${t("delete")}</button></div>`).join(""):`<div class="empty">${t("noTasks")}</div>`;
+ const today=data.tasks.filter(x=>x.date===todayISO()),done=today.filter(x=>x.done).length;
+ $("homeTasks").innerHTML=today.length?today.slice(0,5).map(task=>`<div class="task-row ${task.done?"done":""}"><input class="task-check" type="checkbox" data-complete="${task.id}" ${task.done?"checked":""}><div class="task-copy"><strong>${escapeHTML(task.title)}</strong><small>${task.duration} ${t("mins")} · ${task.xp} XP</small></div></div>`).join(""):`<div class="empty">${t("noTasks")}</div>`;
+ $("statToday").textContent=`${done}/${today.length}`;
+}
+const TASK_CATALOG=[
+["study","مذاكرة اللغة العربية","Study Arabic","قراءة درس أو مراجعة القواعد والتعبير.","Read a lesson or review grammar and writing.",35],
+["study","مذاكرة اللغة الإنجليزية","Study English","مفردات وقواعد وقراءة أو استماع.","Vocabulary, grammar, reading, or listening.",35],
+["study","مذاكرة الرياضيات","Study Mathematics","فهم فكرة وحل مسائل مناسبة.","Understand a concept and solve practice problems.",40],
+["study","مذاكرة الفيزياء","Study Physics","مراجعة المفاهيم والقوانين والتطبيقات.","Review concepts, formulas, and applications.",40],
+["study","مذاكرة الكيمياء","Study Chemistry","مراجعة الدرس والمصطلحات والمعادلات.","Review the lesson, terms, and equations.",40],
+["study","مذاكرة الأحياء","Study Biology","مراجعة الرسومات والمفاهيم وتلخيصها.","Review diagrams and summarize key concepts.",40],
+["study","مذاكرة التاريخ","Study History","ترتيب الأحداث والأسباب والنتائج.","Organize events, causes, and outcomes.",35],
+["study","مذاكرة الجغرافيا","Study Geography","مراجعة الخرائط والمفاهيم والمواقع.","Review maps, concepts, and locations.",35],
+["study","مذاكرة الفلسفة","Study Philosophy","فهم الأفكار ومقارنة وجهات النظر.","Understand ideas and compare viewpoints.",35],
+["study","مذاكرة علم النفس","Study Psychology","مراجعة المفاهيم والأمثلة الأساسية.","Review key concepts and examples.",35],
+["study","مذاكرة المنطق","Study Logic","تدريبات على الاستدلال والتفكير.","Practice reasoning and logic.",30],
+["study","مذاكرة الحاسب الآلي","Study Computer Science","مراجعة المفاهيم والتطبيقات الرقمية.","Review computing concepts and digital skills.",35],
+["study","تدريب برمجة","Programming practice","تطبيق مفهوم برمجي صغير ومراجعته.","Practice one small programming concept.",40],
+["study","مذاكرة اللغة الفرنسية","Study French","مفردات ونطق وقواعد أساسية.","Vocabulary, pronunciation, and grammar.",30],
+["study","مذاكرة اللغة الألمانية","Study German","مفردات وتراكيب قصيرة.","Vocabulary and short sentence patterns.",30],
+["study","مذاكرة اللغة الإسبانية","Study Spanish","مفردات ومحادثة بسيطة.","Vocabulary and simple conversation.",30],
+["study","مذاكرة الاقتصاد","Study Economics","مراجعة المفاهيم والأمثلة.","Review concepts and examples.",35],
+["study","مذاكرة التربية الوطنية","Study Civics","مراجعة الدرس والمصطلحات.","Review the lesson and key terms.",30],
+["study","قراءة جزء من كتاب","Read a book section","قراءة هادئة وتسجيل فكرة مفيدة.","Read calmly and note one useful idea.",25],
+["study","إنهاء الواجب المدرسي","Complete school homework","إنهاء المطلوب ومراجعته.","Finish assigned work and review it.",45],
+["study","مراجعة درس سابق","Review a previous lesson","استرجاع أهم النقاط وحل أسئلة قصيرة.","Recall key points and answer short questions.",30],
+["study","تنظيم ملخصات الدراسة","Organize study notes","ترتيب الملخصات والعناوين والملفات.","Organize notes, headings, and files.",20],
+["study","الاستعداد لاختبار","Prepare for a test","تقسيم المراجعة إلى أجزاء قصيرة.","Break revision into manageable sections.",45],
+["home","ترتيب الغرفة","Tidy the bedroom","إعادة الأشياء إلى أماكنها وترتيب الأسطح.","Put items away and tidy surfaces.",15],
+["home","ترتيب السرير","Make the bed","ترتيب الفراش والوسائد.","Straighten bedding and pillows.",5],
+["home","غسل الصحون","Wash the dishes","غسل الأطباق ووضعها في مكانها.","Wash dishes and put them away.",15],
+["home","تنظيف المكتب","Clean the desk","إزالة الفوضى وتنظيم أدوات الدراسة.","Clear clutter and organize study supplies.",10],
+["home","كنس الأرضية","Sweep the floor","تنظيف مساحة مناسبة من الأرضية.","Sweep an appropriate floor area.",10],
+["home","مسح الأرضية","Mop the floor","مسح مساحة مناسبة مع إبقاء الأرض آمنة.","Mop a suitable area and keep the floor safe.",15],
+["home","إخراج القمامة","Take out the trash","جمع القمامة والتخلص منها بطريقة مناسبة.","Collect and dispose of household waste properly.",8],
+["home","ترتيب الملابس","Organize clothes","طي الملابس النظيفة وترتيبها.","Fold clean clothes and put them away.",15],
+["home","طي الغسيل","Fold laundry","طي الملابس النظيفة وفرزها.","Fold and sort clean laundry.",15],
+["home","ري النباتات","Water the plants","فحص النباتات وري ما يحتاج منها.","Check plants and water those that need it.",8],
+["home","تجهيز الحقيبة","Prepare the school bag","مراجعة الجدول ووضع الكتب والأدوات.","Check the schedule and pack supplies.",10],
+["home","ترتيب الكتب والكراسات","Organize books and notebooks","ترتيب المواد في مكان واضح.","Arrange school materials.",10],
+["home","المساعدة في تجهيز الطعام","Help prepare a meal","المساعدة في مهمة مطبخ مناسبة وآمنة.","Help with a suitable, safe kitchen task.",15],
+["home","ترتيب الأحذية","Arrange shoes","جمع الأحذية وترتيبها في مكانها.","Collect shoes and arrange them neatly.",8],
+["home","ترتيب مساحة مشتركة","Tidy a shared area","ترتيب مساحة صغيرة يستخدمها الجميع.","Tidy a small shared household area.",12],
+["personal","تخطيط اليوم","Plan the day","اختيار أهم المهام وتوزيعها بشكل واقعي.","Choose priorities and plan them realistically.",10],
+["personal","تجهيز خطة الغد","Prepare tomorrow's plan","كتابة الخطوات الأساسية لليوم التالي.","Write the main steps for tomorrow.",10],
+["personal","كتابة ملاحظات اليوم","Write a daily journal note","تسجيل ما تعلمته أو ما تريد تذكره.","Note something you learned or want to remember.",10],
+["personal","تنظيم الملفات الرقمية","Organize digital files","ترتيب ملفات الهاتف أو الكمبيوتر.","Organize files on your device.",15],
+["personal","أخذ استراحة هادئة","Take a calm break","الابتعاد قليلًا عن الشاشة والراحة.","Step away from screens and rest.",10],
+["personal","قراءة للمتعة","Read for enjoyment","اختيار موضوع ممتع والقراءة دون ضغط.","Choose an enjoyable topic and read without pressure.",20],
+["personal","مراجعة الأدوات الشخصية","Check personal supplies","التأكد من توفر الأدوات التي تحتاجها.","Check that everyday supplies are ready.",8]
+].map((x,i)=>({id:"task-"+i,category:x[0],ar:x[1],en:x[2],descAr:x[3],descEn:x[4],duration:x[5]}));
+const EXERCISES=[
+["gym","strength","ضغط صدر على الجهاز","Machine chest press","مقاومة مريحة وتحكم في الحركة.","Comfortable resistance and controlled movement.",15],
+["gym","strength","سحب علوي","Lat pulldown","اضبط الجهاز واطلب المساعدة في البداية.","Ask for help adjusting the machine at first.",15],
+["gym","strength","سحب أرضي جالس","Seated cable row","حافظ على وضع مريح للظهر.","Keep a comfortable back position.",15],
+["gym","strength","ضغط الأرجل على الجهاز","Leg press machine","استخدم مقاومة خفيفة ومدى مريح.","Use light resistance and a comfortable range.",15],
+["gym","strength","ثني الرجل الخلفي","Seated leg curl","حركة بطيئة ومتحكم بها.","Slow, controlled movement.",12],
+["gym","strength","رفع السمانة","Calf raises","بوزن الجسم أو مقاومة خفيفة.","Bodyweight or light resistance.",10],
+["gym","strength","ضغط كتف على الجهاز","Machine shoulder press","مقاومة خفيفة دون إجبار المفصل.","Keep resistance light and pain-free.",12],
+["gym","strength","ثني الذراع للبايسبس","Biceps curl","وزن مريح وتحكم كامل.","Comfortable resistance and control.",10],
+["gym","strength","دفع الحبل للترايسبس","Cable triceps pushdown","حافظ على ثبات المرفقين.","Keep elbows steady.",10],
+["gym","strength","جسر الحوض","Glute bridge","يمكن أداؤه دون أوزان.","Can be done without weights.",10],
+["gym","strength","بلانك","Plank","ابدأ بمدة قصيرة ومريحة.","Start with short, comfortable holds.",8],
+["gym","strength","صعود منصة منخفضة","Low step-ups","استخدم منصة ثابتة ومنخفضة.","Use a stable, low step.",10],
+["home","strength","ضغط على الحائط","Wall push-ups","حركة دفع بسيطة.","A gentle pushing movement.",8],
+["home","strength","ضغط مائل على سطح ثابت","Incline push-ups","اختر سطحًا ثابتًا وارتفاعًا مناسبًا.","Choose a stable surface and comfortable height.",8],
+["home","strength","قرفصاء بوزن الجسم","Bodyweight squats","حركة مريحة مع الحفاظ على التوازن.","Use a comfortable range and steady balance.",10],
+["home","strength","اندفاع خلفي","Reverse lunges","يمكن الاستناد إلى كرسي ثابت للتوازن.","Use a stable chair for balance if needed.",8],
+["home","strength","تمرين الطائر والكلب","Bird dog","حركة بطيئة مع ثبات الجذع.","Move slowly while keeping the trunk steady.",8],
+["home","strength","تمرين Dead Bug","Dead bug","حركة متبادلة بمدى مريح.","Alternate sides through a comfortable range.",8],
+["home","strength","جسر الحوض على الأرض","Floor glute bridge","حركة بسيطة لعضلات الورك.","A simple hip movement.",8],
+["home","strength","رفع الكعب واقفًا","Standing calf raises","يمكن الاستناد إلى الحائط.","Hold a wall for balance if useful.",8],
+["home","strength","الجلوس والوقوف من كرسي","Chair sit-to-stands","استخدم كرسيًا ثابتًا.","Use a stable chair.",8],
+["home","mobility","حركة القطة والبقرة","Cat-cow mobility","حركة لطيفة دون دفع أو ألم.","Gentle movement without forcing range.",6],
+["home","mobility","تمدد خفيف لكامل الجسم","Gentle full-body stretch","تنفس طبيعي وتجنب الشد المؤلم.","Breathe normally and avoid painful stretching.",10],
+["cardio","walk","مشي مريح أو نشيط","Comfortable or brisk walk","سرعة تسمح لك بالكلام براحة.","A pace that still lets you talk comfortably.",20],
+["cardio","cardio","هرولة خفيفة","Easy jog","ابدأ تدريجيًا وعلى سطح مناسب.","Build up gradually on a suitable surface.",15],
+["cardio","cardio","ركوب الدراجة","Cycling","اختر مسارًا آمنًا أو دراجة ثابتة.","Choose a safe route or stationary bike.",20],
+["cardio","cardio","سباحة ترفيهية","Recreational swimming","في مكان مخصص وتحت إشراف مناسب.","Use a designated pool with suitable supervision.",20],
+["cardio","cardio","رقص وحركة على الموسيقى","Dance movement","اختر موسيقى وحركات تستمتع بها.","Choose music and movements you enjoy.",15],
+["cardio","cardio","نط الحبل بوتيرة مريحة","Comfortable jump-rope practice","على أرضية مناسبة وبفترات قصيرة.","Use a suitable surface and short intervals.",8],
+["sports","sport","كرة القدم","Football / soccer","لعب ترفيهي مع إحماء مناسب.","Recreational play with a suitable warm-up.",30],
+["sports","sport","كرة السلة","Basketball","تدريب مهارات أو لعب خفيف.","Skill practice or relaxed play.",25],
+["sports","sport","الكرة الطائرة","Volleyball","تدريب تمرير أو لعب جماعي.","Practice passing or play with a group.",25],
+["sports","sport","التنس","Tennis","تدريب ضربات أساسية أو لعب ترفيهي.","Practice basic strokes or play recreationally.",25],
+["sports","sport","تنس الطاولة","Table tennis","نشاط مهاري للمساحات الصغيرة.","A skill-based activity for smaller spaces.",20],
+["sports","sport","الريشة الطائرة","Badminton","لعب خفيف مع مساحة حركة كافية.","Play lightly with enough room to move.",20],
+["sports","sport","كرة اليد","Handball","تدريب مهارات أساسية أو لعب منظم.","Practice basic skills or organized play.",25],
+["mobility","mobility","يوغا خفيفة للمبتدئين","Gentle beginner yoga","حركات مريحة دون إجبار أو ألم.","Comfortable movements without forcing or pain.",15],
+["mobility","mobility","حركة المفاصل","Joint mobility routine","حركات بسيطة للكتفين والورك والكاحلين.","Simple shoulder, hip, and ankle movements.",8],
+["mobility","mobility","تدريب توازن بسيط","Simple balance practice","بالقرب من حائط أو سطح ثابت.","Practice near a wall or stable support.",8],
+["mobility","mobility","تنفس واسترخاء","Breathing and relaxation","تنفس طبيعي وراحة هادئة.","Natural breathing and calm rest.",5]
+].map((x,i)=>({id:"ex-"+i,category:x[0],type:x[1],ar:x[2],en:x[3],descAr:x[4],descEn:x[5],minutes:x[6]}));
+function renderCatalog(){
+ const cat=$("catalogCategory").value,q=normalize($("catalogSearch").value);
+ const items=TASK_CATALOG.filter(x=>(cat==="all"||x.category===cat)&&(!q||normalize(x.ar+" "+x.en+" "+x.descAr+" "+x.descEn).includes(q)));
+ $("catalogTotal").textContent=items.length;
+ $("taskCatalog").innerHTML=items.length?items.map(x=>`<label class="catalog-item"><input type="checkbox" data-catalog="${x.id}" ${selectedCatalog.has(x.id)?"checked":""}><span><strong>${data.settings.language==="ar"?x.ar:x.en}</strong><small>${data.settings.language==="ar"?x.descAr:x.descEn}</small></span></label>`).join(""):`<div class="empty">${t("noCatalog")}</div>`;
+ $("selectedCount").textContent=selectedCatalog.size+" selected";
+}
+function updateBMI(){
+ const h=Number($("height").value),w=Number($("weight").value);
+ $("bmiValue").textContent=(h>=80&&h<=230&&w>=20&&w<=250)?(w/Math.pow(h/100,2)).toFixed(1):"—";
+}
+function renderExercises(){
+ const cat=$("exerciseCategory").value,q=normalize($("exerciseSearch").value);
+ const items=EXERCISES.filter(x=>(cat==="all"||x.category===cat)&&(!q||normalize(x.ar+" "+x.en+" "+x.descAr+" "+x.descEn).includes(q)));
+ $("exerciseCatalog").innerHTML=items.map(x=>`<div class="exercise-item"><div><strong>${data.settings.language==="ar"?x.ar:x.en}</strong><small>${data.settings.language==="ar"?x.descAr:x.descEn} · ${x.minutes} ${t("mins")}</small></div><button class="soft-btn" data-pick-ex="${x.id}">${data.settings.language==="ar"?"اختيار":"Select"}</button></div>`).join("")||`<div class="empty">${t("noCatalog")}</div>`;
+}
+function getRecentActivity(){const start=new Date();start.setHours(0,0,0,0);start.setDate(start.getDate()-6);return data.fitness.logs.filter(x=>new Date(x.date+"T00:00:00")>=start)}
+function renderFitness(){
+ const p=data.fitness.profile;$("height").value=p.height||"";$("weight").value=p.weight||"";$("age").value=p.age||"";updateBMI();renderExercises();
+ const days=[];for(let i=6;i>=0;i--){const date=localDateOffset(-i);const mins=getRecentActivity().filter(x=>x.date===date).reduce((a,b)=>a+b.minutes,0);days.push({date,mins})}
+ const max=Math.max(30,...days.map(x=>x.mins));
+ const locale=data.settings.language==="ar"?"ar-EG":"en-US";
+ $("weekChart").innerHTML=days.map(x=>{const d=new Date(x.date+"T12:00:00");const day=d.toLocaleDateString(locale,{weekday:"short"});return `<div class="week-day"><b>${x.mins||""}</b><div class="bar-wrap"><div class="bar" style="height:${Math.max(3,x.mins/max*100)}%"></div></div><small>${day}</small></div>`}).join("");
+ const sum=days.reduce((a,b)=>a+b.mins,0);if($("homeWeekMinutes"))$("homeWeekMinutes").textContent=sum;$("weekMinutes").textContent=sum;$("weekProgress").style.width=Math.min(100,sum/300*100)+"%";
+ const logs=[...data.fitness.logs].sort((a,b)=>(b.date||"").localeCompare(a.date||"")||(b.created||0)-(a.created||0));
+ $("activityHistory").innerHTML=logs.length?logs.map(x=>`<div class="history-row"><div class="history-copy"><strong>${escapeHTML(x.name)}</strong><small>${escapeHTML(x.date)} · ${x.minutes} ${t("mins")} · ${escapeHTML(x.notes||"")}</small></div><button class="danger-btn" data-delete-activity="${x.id}">${t("delete")}</button></div>`).join(""):`<div class="empty">${t("noActivities")}</div>`;
+}
+
+const assistantSelected=new Set();
+let assistantPendingPlan=null;
+const assistantChatMessages=[];
+function assistantWelcome(){
+ if(assistantChatMessages.length)return;
+ assistantAddMessage(data.settings.language==="ar"
+  ?"أهلًا! أقدر أساعدك في ترتيب مهامك، عرض المتأخر، اقتراح المهمة التالية، وإضافة مهمة بسيطة. اختار مهامك من القائمة أو اكتب طلبك."
+  :"Hi! I can organize tasks, show overdue items, suggest the next task, and add a simple task. Select tasks below or type a request.","assistant");
+}
+function assistantAddMessage(message,who="assistant"){
+ const log=$("assistantChatLog");if(!log)return;
+ assistantChatMessages.push({message,who});
+ const bubble=document.createElement("div");
+ bubble.className="assistant-message "+(who==="user"?"user":"assistant");
+ const label=document.createElement("span");label.className="assistant-message-label";
+ label.textContent=who==="user"?(data.settings.language==="ar"?"أنت":"You"):"VESPERA";
+ const content=document.createElement("div");content.className="assistant-message-text";content.textContent=message;
+ bubble.append(label,content);log.appendChild(bubble);log.scrollTop=log.scrollHeight;
+}
+function assistantAddPlanPreview(tasks,scope){
+ assistantPendingPlan=tasks.map(x=>x.id);
+ const log=$("assistantChatLog");if(!log)return;
+ const bubble=document.createElement("div");bubble.className="assistant-message assistant";
+ const label=document.createElement("span");label.className="assistant-message-label";label.textContent="VESPERA";
+ const content=document.createElement("div");content.className="assistant-message-text";
+ const heading=document.createElement("p");
+ heading.textContent=data.settings.language==="ar"
+  ?`ده ترتيب مقترح لـ ${tasks.length} مهمة، حسب موعدها أولًا ثم المدة الأقصر. مش هغيّر تواريخها أو أحدد ساعات.`
+  :`Here is a suggested order for ${tasks.length} tasks, by due date and then shorter duration. I won't change their dates or assign times.`;
+ const list=document.createElement("ol");list.className="assistant-plan-list";
+ tasks.forEach(task=>{const li=document.createElement("li");li.textContent=`${task.title} — ${task.duration} ${t("mins")} · ${task.date}`;list.appendChild(li)});
+ const button=document.createElement("button");button.type="button";button.className="primary-btn assistant-apply-btn";button.dataset.assistantApply="true";
+ button.textContent=data.settings.language==="ar"?"طبّق الترتيب":"Apply order";
+ content.append(heading,list,button);bubble.append(label,content);log.appendChild(bubble);log.scrollTop=log.scrollHeight;
+}
+function assistantSortTasks(tasks){
+ return [...tasks].sort((a,b)=>{
+  const ad=a.date||"9999-12-31",bd=b.date||"9999-12-31";
+  if(ad!==bd)return ad.localeCompare(bd);
+  if((a.duration||25)!==(b.duration||25))return (a.duration||25)-(b.duration||25);
+  const categoryOrder={study:0,personal:1,home:2};
+  return (categoryOrder[a.category]??3)-(categoryOrder[b.category]??3);
+ });
+}
+function renderAssistantTaskPicker(){
+ const host=$("assistantTaskPicker");if(!host)return;
+ const open=data.tasks.filter(x=>!x.done).sort((a,b)=>(a.date||"").localeCompare(b.date||""));
+ for(const id of [...assistantSelected])if(!open.some(x=>x.id===id))assistantSelected.delete(id);
+ $("assistantSelectedCount").textContent=String(assistantSelected.size);
+ host.innerHTML=open.length?open.map(task=>`<label class="assistant-task-option"><input type="checkbox" data-assistant-select="${task.id}" ${assistantSelected.has(task.id)?"checked":""}><span><strong>${escapeHTML(task.title)}</strong><small>${escapeHTML(task.date)} · ${task.duration} ${t("mins")} · ${categoryLabel(task.category)}</small></span></label>`).join(""):`<div class="empty">${t("noTasks")}</div>`;
+}
+function assistantPlan(tasks){
+ if(!tasks.length){
+  assistantAddMessage(data.settings.language==="ar"?"مش لاقي مهام مفتوحة في النطاق ده. أضف مهام أو اختار مهام غير مكتملة من القائمة.":"I couldn't find unfinished tasks in that scope. Add tasks or select unfinished tasks below.");
+  return;
+ }
+ assistantAddPlanPreview(assistantSortTasks(tasks));
+}
+function assistantHandleCommand(raw){
+ const input=String(raw||"").trim();if(!input)return;
+ assistantAddMessage(input,"user");
+ const q=normalize(input);
+ const ar=data.settings.language==="ar";
+ const say=msg=>assistantAddMessage(msg);
+ const selected=data.tasks.filter(x=>!x.done&&assistantSelected.has(x.id));
+ if(q.includes("المهام المختاره")||q.includes("المهام المحدده")||q.includes("selected tasks")||q.includes("organize selected")){
+  if(!selected.length){say(ar?"حدّد المهام اللي عايز ترتبها من قائمة «اختيار المهام للمساعد» الأول.":"Select the tasks you want arranged in the task picker first.");return}
+  assistantPlan(selected);return;
+ }
+ if(q.includes("نظم اليوم")||q.includes("رتب اليوم")||q.includes("مهام اليوم")||q.includes("plan my day")||q.includes("today's tasks")||q.includes("organize today")){
+  assistantPlan(data.tasks.filter(x=>!x.done&&x.date===todayISO()));return;
+ }
+ if(q.includes("رتب مهامي")||q.includes("نظم مهامي")||q.includes("organize my tasks")||q==="plan my tasks"){
+  assistantPlan(data.tasks.filter(x=>!x.done));return;
+ }
+ if(q.includes("متاخر")||q.includes("overdue")||q.includes("late tasks")){
+  const late=assistantSortTasks(data.tasks.filter(x=>!x.done&&x.date<todayISO()));
+  if(!late.length){say(ar?"مفيش مهام متأخرة حاليًا.":"There are no overdue tasks right now.");return}
+  say((ar?"المهام المتأخرة عندك: ":"Your overdue tasks: ")+late.map(x=>`${x.title} (${x.date})`).join("، "));return;
+ }
+ if(q.includes("المهمه التاليه")||q.includes("المهمة التالية")||q.includes("التاليه")||q.includes("next task")||q==="next"){
+  const next=assistantSortTasks(data.tasks.filter(x=>!x.done))[0];
+  say(next?(ar?`المهمة التالية المقترحة: ${next.title} — ${next.duration} دقيقة، وموعدها ${next.date}.`:`Suggested next task: ${next.title} — ${next.duration} min, due ${next.date}.`):(ar?"كل مهامك مكتملة حاليًا.":"All your tasks are complete right now."));return;
+ }
+ if(q.includes("كم مهمه")||q.includes("عدد المهام")||q.includes("how many tasks")){
+  const open=data.tasks.filter(x=>!x.done).length,done=data.tasks.filter(x=>x.done).length;
+  say(ar?`عندك ${open} مهمة غير مكتملة و${done} مهمة مكتملة.`:`You have ${open} unfinished tasks and ${done} completed tasks.`);return;
+ }
+ if(q.includes("افتح المهام")||q==="tasks"||q.includes("open tasks")){setPage("tasks");say(ar?"فتحت لك صفحة المهام.":"I opened the tasks page.");return}
+ if(q.includes("افتح النشاط")||q.includes("افتح الرياضه")||q==="fitness"||q.includes("open fitness")){setPage("fitness");say(ar?"فتحت لك صفحة النشاط البدني.":"I opened the fitness page.");return}
+ const addMatch=input.match(/^(?:ضيف|اضف|أضف|add)\s+(?:مهمة|مهمه|task)\s+(.+)$/i);
+ if(addMatch&&addMatch[1].trim()){
+  const title=addMatch[1].trim().slice(0,90);
+  addTask({title,category:"personal",date:todayISO(),duration:25,description:"",source:"assistant"});
+  assistantSelected.clear();renderAssistantTaskPicker();
+  say(ar?`أضفت مهمة «${title}» لليوم بمدة افتراضية 25 دقيقة. تقدر تعدّل تفاصيلها من صفحة المهام.`:`Added "${title}" for today with a default duration of 25 minutes. You can edit its details on the tasks page.`);return;
+ }
+ if(q.includes("ساعدني")||q.includes("ماذا تستطيع")||q.includes("help")||q.includes("what can you")){
+  say(ar?"أقدر أعمل حاجات بسيطة داخل التطبيق: رتّب مهام اليوم، رتّب المهام المختارة، اعرض المهام المتأخرة، اقترح المهمة التالية، احسب عدد مهامك، أو أضف مهمة بكتابة «أضف مهمة + اسم المهمة».":"I can do simple in-app actions: plan today's tasks, organize selected tasks, show overdue tasks, suggest the next task, count your tasks, or add one with “add task + task name”.");return;
+ }
+ say(ar?"مش متأكد من طلبك. جرّب: «رتب مهام اليوم»، «رتب المهام المختارة»، «اعرض المتأخرة»، «المهمة التالية»، أو «أضف مهمة قراءة».":"I’m not sure what you mean. Try: “plan today's tasks”, “organize selected tasks”, “show overdue”, “next task”, or “add task reading”.");
+}
+function assistantApplyPendingPlan(){
+ if(!assistantPendingPlan?.length)return;
+ const ids=new Set(assistantPendingPlan);
+ const planned=assistantSortTasks(data.tasks.filter(x=>ids.has(x.id)&&!x.done));
+ const rest=data.tasks.filter(x=>!ids.has(x.id));
+ data.tasks=[...planned,...rest];
+ assistantPendingPlan=null;
+ save();
+ renderAssistantTaskPicker();
+ assistantAddMessage(data.settings.language==="ar"?"تم تطبيق الترتيب. المهام المختارة أصبحت في بداية قائمة المهام، من غير تغيير تواريخها أو حالتها.":"Order applied. The selected tasks are now at the top of your task list; their dates and completion states were not changed.");
+}
+
+function renderAdvice(){
+ const open=data.tasks.filter(x=>!x.done),minutes=getRecentActivity().reduce((a,b)=>a+b.minutes,0);
+ let msg;if(!data.tasks.length)msg=t("assistantNoTasks");else if(!open.length)msg=t("assistantDone");else msg=t("assistantTasks").replace("{n}",open.length);
+ const move=minutes?t("assistantMove").replace("{n}",minutes):t("assistantStartMove");
+ $("assistantAdvice").textContent=msg+" "+move;
+ if($("homeAdvice"))$("homeAdvice").textContent=msg+" "+move;
+}
+function renderHome(){
+ const xp=data.player.xp||0,rank=rankForXP(xp),done=data.tasks.filter(x=>x.done).length,minutes=data.fitness.logs.reduce((a,b)=>a+b.minutes,0);
+ const level=Math.floor(xp/100)+1,levelXP=xp%100;
+ if($("playerLevel"))$("playerLevel").textContent=String(level).padStart(2,"0");if($("playerLevelMirror"))$("playerLevelMirror").textContent=String(level).padStart(2,"0");
+ if($("levelProgress"))$("levelProgress").style.width=levelXP+"%";
+ if($("levelProgressText"))$("levelProgressText").textContent=`${levelXP} / 100 XP`;
+ $("statXP").textContent=xp;$("statDone").textContent=done;$("statMinutes").textContent=minutes;
+ $("rankBadge").textContent=rank.name;$("rankName").textContent=rank.name;
+ $("rankCaption").textContent=rank.max?t("rankMax"):t("rankStart");
+ const pct=rank.max?100:Math.max(0,Math.min(100,(xp-rank.start)/(rank.next-rank.start)*100));
+ $("rankProgress").style.width=pct+"%";$("rankProgressText").textContent=rank.max?xp+" XP":`${xp-rank.start} / ${rank.next-rank.start} XP · ${t("rankNext")}`;
+ renderTasks();renderAdvice();
+}
+const THEMES={
+ blue:{accent:"#75b8ff",soft:"#b5d9ff",rgb:"117,184,255"},
+ pink:{accent:"#f28bc9",soft:"#ffc5e7",rgb:"242,139,201"},
+ violet:{accent:"#b49aff",soft:"#d8caff",rgb:"180,154,255"},
+ cyan:{accent:"#72e2ec",soft:"#b9f7fb",rgb:"114,226,236"},
+ emerald:{accent:"#75d9ad",soft:"#b5f3d5",rgb:"117,217,173"},
+ amber:{accent:"#f2c777",soft:"#ffe4a8",rgb:"242,199,119"},burgundy:{accent:"#b94b68",soft:"#ef9bad",rgb:"185,75,104"},silver:{accent:"#c6d2df",soft:"#edf4fb",rgb:"198,210,223"},ice:{accent:"#a5dcff",soft:"#d5f0ff",rgb:"165,220,255"}
+};
+function cycleTheme(){const names=Object.keys(THEMES),i=names.indexOf(data.settings.theme);data.settings.theme=names[(i+1)%names.length];save();toast(data.settings.language==="ar"?"تم تغيير لون الواجهة":"Theme changed")}
+function renderThemeOptions(){document.querySelectorAll("[data-theme-pick]").forEach(el=>el.classList.toggle("selected",el.dataset.themePick===data.settings.theme));}
+function pushNotification(title,body,type="info",key=null){
+ if(!Array.isArray(data.notifications))data.notifications=[];
+ if(key&&data.notifications.some(n=>n.key===key))return false;
+ const item={id:uid(),title,body,type,key,created:Date.now(),read:false};
+ data.notifications.unshift(item);data.notifications=data.notifications.slice(0,60);
+ if(data.settings.systemNotifications&&"Notification" in window&&Notification.permission==="granted"){
+  const options={body,icon:"./icon.svg",tag:key||item.id};
+  if("serviceWorker" in navigator){navigator.serviceWorker.ready.then(reg=>reg.showNotification(title,options)).catch(()=>{try{new Notification(title,options)}catch(e){}})}
+  else{try{new Notification(title,options)}catch(e){}}
+ }
+ return true;
+}
+function renderNotifications(){
+ const list=$("notificationList");if(!list)return;
+ const items=Array.isArray(data.notifications)?data.notifications:[];
+ const unread=items.filter(x=>!x.read).length;
+ const count=$("notificationCount");count.textContent=unread>9?"9+":String(unread);count.hidden=!unread;
+ list.innerHTML=items.length?items.map(n=>`<article class="notification-item ${n.read?"read":"unread"}"><span class="notification-dot ${escapeHTML(n.type||"info")}"></span><div class="notification-copy"><strong>${escapeHTML(n.title)}</strong><p>${escapeHTML(n.body)}</p><small>${new Date(n.created).toLocaleString(data.settings.language==="ar"?"ar-EG":"en-US",{dateStyle:"short",timeStyle:"short"})}</small></div><button class="notification-read" type="button" data-notification-read="${n.id}" aria-label="Mark as read">✓</button></article>`).join(""):`<div class="empty notification-empty">${t("notificationsEmpty")}</div>`;
+}
+function updateNotificationPermissionLabel(){
+ const label=$("notificationPermission");if(!label)return;
+ const granted="Notification" in window&&Notification.permission==="granted"&&data.settings.systemNotifications;
+ label.textContent=granted?t("notificationPermissionOn"):t("notificationPermissionOff");
+ const button=$("enableNotifications");if(button)button.textContent=granted?(data.settings.language==="ar"?"إيقاف إشعارات الجهاز":"Turn off device notifications"):t("enableNotifications");
+}
+async function toggleSystemNotifications(){
+ if(data.settings.systemNotifications){data.settings.systemNotifications=false;save();toast(data.settings.language==="ar"?"تم إيقاف إشعارات الجهاز":"Device notifications disabled");return;}
+ if(!window.isSecureContext||!("Notification" in window)){toast(data.settings.language==="ar"?"إشعارات الجهاز تحتاج HTTPS ومتصفحًا يدعمها؛ مركز الإشعارات داخل الموقع يعمل عادي.":"Device notifications require HTTPS and browser support; in-app notifications still work.");return;}
+ try{const permission=await Notification.requestPermission();data.settings.systemNotifications=permission==="granted";save();toast(permission==="granted"?(data.settings.language==="ar"?"تم تفعيل إشعارات الجهاز":"Device notifications enabled"):(data.settings.language==="ar"?"لم يتم منح إذن الإشعارات":"Notification permission was not granted"));}catch(e){toast(data.settings.language==="ar"?"تعذر تفعيل الإشعارات":"Could not enable notifications");}
+}
+function checkDueTasks(){
+ let changed=false;
+ for(const task of data.tasks){if(!task.done&&task.date&&task.date<=todayISO()){
+  const key=`due:${task.id}:${todayISO()}`;
+  const title=task.date<todayISO()?(data.settings.language==="ar"?"مهمة متأخرة":"Overdue task"):(data.settings.language==="ar"?"موعد مهمة اليوم":"Task due today");
+  const body=task.title;
+  if(pushNotification(title,body,"reminder",key))changed=true;
+ }}
+ if(changed){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));renderNotifications();}
+}
+function renderAll(){
+ document.documentElement.dataset.theme=THEMES[data.settings.theme]?data.settings.theme:"blue";
+ document.documentElement.lang=data.settings.language;document.documentElement.dir=data.settings.language==="ar"?"rtl":"ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(t(key))el.textContent=t(key)});
+ if($("assistantInput"))$("assistantInput").placeholder=t("assistantInputPlaceholder");
+ $("taskDate").value=$("taskDate").value||todayISO();$("activityDate").value=$("activityDate").value||todayISO();
+ renderHome();renderCatalog();renderFitness();renderAssistantTaskPicker();renderNotifications();renderThemeOptions();updateNotificationPermissionLabel();if($("todayLabel"))$("todayLabel").textContent=new Date().toLocaleDateString(data.settings.language==="ar"?"ar-EG":"en-US",{weekday:"long",day:"numeric",month:"long"});
+}
+function toggleLanguage(){data.settings.language=data.settings.language==="ar"?"en":"ar";save()}
+function completeTask(id,checked){
+ const task=data.tasks.find(x=>x.id===id);if(!task)return;
+ if(checked&&!task.done){task.done=true;task.completedAt=Date.now();data.player.xp+=task.xp;data.player.completed++;pushNotification(data.settings.language==="ar"?"مهمة مكتملة":"Task completed",task.title+" · +"+task.xp+" XP","success")}
+ else if(!checked&&task.done){task.done=false;task.completedAt=null;data.player.xp=Math.max(0,data.player.xp-task.xp);data.player.completed=Math.max(0,data.player.completed-1)}
+ save();
+}
+function handleClick(e){
+ const applyPlan=e.target.closest("[data-assistant-apply]");if(applyPlan){assistantApplyPendingPlan();return}
+ const assistantAction=e.target.closest("[data-assistant-action]");if(assistantAction){const action=assistantAction.dataset.assistantAction;assistantHandleCommand(action==="today"?"رتب مهام اليوم":action==="overdue"?"اعرض المتأخرة":action==="next"?"المهمة التالية":"ماذا تستطيع أن تفعل؟");return}
+ const page=e.target.closest("[data-page]");if(page){setPage(page.dataset.page);return}
+ const go=e.target.closest("[data-go]");if(go){setPage(go.dataset.go);return}
+ const complete=e.target.closest("[data-complete]");if(complete){completeTask(complete.dataset.complete,e.target.checked);return}
+ const del=e.target.closest("[data-delete-task]");if(del){data.tasks=data.tasks.filter(x=>x.id!==del.dataset.deleteTask);save();return}
+ const delAct=e.target.closest("[data-delete-activity]");if(delAct){data.fitness.logs=data.fitness.logs.filter(x=>x.id!==delAct.dataset.deleteActivity);save();return}
+ const pick=e.target.closest("[data-pick-ex]");if(pick){const ex=EXERCISES.find(x=>x.id===pick.dataset.pickEx);if(ex){$("activityName").value=data.settings.language==="ar"?ex.ar:ex.en;$("activityType").value=ex.type;$("activityMinutes").value=ex.minutes;$("activityForm").scrollIntoView({behavior:"smooth",block:"center"})}return}
+}
+document.addEventListener("click",handleClick);
+document.addEventListener("change",e=>{
+ const assistantCb=e.target.closest("[data-assistant-select]");
+ if(assistantCb){if(assistantCb.checked)assistantSelected.add(assistantCb.dataset.assistantSelect);else assistantSelected.delete(assistantCb.dataset.assistantSelect);$("assistantSelectedCount").textContent=String(assistantSelected.size);return}
+ const cb=e.target.closest("[data-catalog]");if(!cb)return;if(cb.checked)selectedCatalog.add(cb.dataset.catalog);else selectedCatalog.delete(cb.dataset.catalog);$("selectedCount").textContent=selectedCatalog.size+" selected"
+});
+$("taskForm").addEventListener("submit",e=>{e.preventDefault();const title=$("taskTitle").value.trim();if(!title)return;addTask({title,description:$("taskDescription").value.trim(),category:$("taskCategory").value,date:$("taskDate").value,duration:safeNumber($("taskDuration").value,1,600)});$("taskForm").reset();$("taskDate").value=todayISO();toast(t("taskAdded"))});
+$("taskFilter").addEventListener("change",renderTasks);
+$("catalogCategory").addEventListener("change",renderCatalog);$("catalogSearch").addEventListener("input",renderCatalog);
+$("selectVisible").addEventListener("click",()=>{const cat=$("catalogCategory").value,q=normalize($("catalogSearch").value);TASK_CATALOG.filter(x=>(cat==="all"||x.category===cat)&&(!q||normalize(x.ar+" "+x.en+" "+x.descAr+" "+x.descEn).includes(q))).forEach(x=>selectedCatalog.add(x.id));renderCatalog()});
+$("clearSelected").addEventListener("click",()=>{selectedCatalog.clear();renderCatalog()});
+$("addSelectedTasks").addEventListener("click",()=>{if(!selectedCatalog.size){toast(t("selectAtLeast"));return}const items=TASK_CATALOG.filter(x=>selectedCatalog.has(x.id));items.forEach(x=>addTask({title:data.settings.language==="ar"?x.ar:x.en,description:data.settings.language==="ar"?x.descAr:x.descEn,category:x.category,duration:x.duration,date:todayISO(),source:"catalog"},true));pushNotification(data.settings.language==="ar"?"مهام جديدة":"New tasks",`${items.length} ${data.settings.language==="ar"?"مهام تمت إضافتها":"tasks added"}`,"task");selectedCatalog.clear();save();toast(t("selectedAdded"))});
+$("height").addEventListener("input",updateBMI);$("weight").addEventListener("input",updateBMI);
+$("saveProfile").addEventListener("click",()=>{const h=$("height").value,w=$("weight").value,a=$("age").value;if(h&&(Number(h)<80||Number(h)>230)||w&&(Number(w)<20||Number(w)>250)||a&&(Number(a)<8||Number(a)>100)){toast(data.settings.language==="ar"?"راجع القيم المدخلة":"Please check the entered values");return}data.fitness.profile={height:h,weight:w,age:a};save();toast(t("profileSaved"))});
+$("exerciseCategory").addEventListener("change",renderExercises);$("exerciseSearch").addEventListener("input",renderExercises);
+$("activityForm").addEventListener("submit",e=>{e.preventDefault();const name=$("activityName").value.trim(),minutes=safeNumber($("activityMinutes").value,1,600);if(!name)return;data.fitness.logs.unshift({id:uid(),name,type:$("activityType").value,date:$("activityDate").value||todayISO(),minutes,notes:$("activityNotes").value.trim(),created:Date.now()});pushNotification(data.settings.language==="ar"?"تم تسجيل نشاط":"Activity logged",`${name} · ${minutes} ${t("mins")}`,"activity");save();$("activityForm").reset();$("activityDate").value=todayISO();$("activityMinutes").value=20;toast(t("activitySaved"))});
+$("themeToggle").addEventListener("click",cycleTheme);
+document.addEventListener("click",e=>{const pick=e.target.closest("[data-theme-pick]");if(pick){data.settings.theme=pick.dataset.themePick;save();}});
+$("langToggle").addEventListener("click",toggleLanguage);$("settingsLang").addEventListener("click",toggleLanguage);
+$("quickAdd").addEventListener("click",()=>{setPage("tasks");$("taskTitle").focus()});
+$("assistantChatForm").addEventListener("submit",e=>{e.preventDefault();const value=$("assistantInput").value.trim();if(!value)return;$("assistantInput").value="";assistantHandleCommand(value)});
+$("assistantSelectToday").addEventListener("click",()=>{data.tasks.filter(x=>!x.done&&x.date===todayISO()).forEach(x=>assistantSelected.add(x.id));renderAssistantTaskPicker()});
+$("assistantSelectAll").addEventListener("click",()=>{data.tasks.filter(x=>!x.done).forEach(x=>assistantSelected.add(x.id));renderAssistantTaskPicker()});
+$("assistantClearSelection").addEventListener("click",()=>{assistantSelected.clear();renderAssistantTaskPicker()});
+$("refreshAdvice").addEventListener("click",renderAdvice);
+$("exportData").addEventListener("click",()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="vespera-v6-backup.json";a.click();URL.revokeObjectURL(url)});
+$("importFile").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());if(!parsed||!Array.isArray(parsed.tasks)||!parsed.fitness)throw new Error("bad");data={...structuredClone(DEFAULT),...parsed,settings:{...DEFAULT.settings,...parsed.settings},player:{...DEFAULT.player,...parsed.player},notifications:Array.isArray(parsed.notifications)?parsed.notifications:[],fitness:{...DEFAULT.fitness,...parsed.fitness,profile:{...DEFAULT.fitness.profile,...parsed.fitness.profile},logs:Array.isArray(parsed.fitness.logs)?parsed.fitness.logs:[]},prayer:{...DEFAULT.prayer,...(parsed.prayer||{}),records:(parsed.prayer&&parsed.prayer.records)||{},dhikr:{...DEFAULT.prayer.dhikr,...((parsed.prayer&&parsed.prayer.dhikr)||{})}}};save();toast(t("importDone"))}catch(err){toast(t("invalidFile"))}e.target.value=""});
+$("resetData").addEventListener("click",()=>{if(!confirm(t("confirmReset")))return;data=structuredClone(DEFAULT);selectedCatalog.clear();save();toast(t("resetDone"))});
+checkDueTasks();
+renderAll();
+setInterval(checkDueTasks,5*60*1000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkDueTasks()});
+
+$("notificationToggle").addEventListener("click",()=>{const panel=$("notificationPanel");panel.hidden=!panel.hidden;if(!panel.hidden)renderNotifications()});
+$("notificationClose").addEventListener("click",()=>{$("notificationPanel").hidden=true});
+$("notificationMarkAll").addEventListener("click",()=>{data.notifications.forEach(n=>n.read=true);save()});
+$("notificationClear").addEventListener("click",()=>{data.notifications=[];save()});
+$("enableNotifications").addEventListener("click",toggleSystemNotifications);
+document.addEventListener("click",e=>{const read=e.target.closest("[data-notification-read]");if(read){const n=data.notifications.find(x=>x.id===read.dataset.notificationRead);if(n)n.read=true;save();}});
+document.addEventListener("click",e=>{if(!e.target.closest(".notification-wrap"))$("notificationPanel").hidden=true});
+
+if("serviceWorker" in navigator && location.protocol!=="file:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
+
+
+// V7 prayer, adhkar and tasbeeh module — local-only
+const PRAYER_NAMES=["الفجر","الظهر","العصر","المغرب","العشاء"];
+const DHIKR_DATA={
+ morning:[["أصبحنا وأصبح الملك لله، والحمد لله.",1],["رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.",3],["سبحان الله وبحمده.",100]],
+ evening:[["أمسينا وأمسى الملك لله، والحمد لله.",1],["رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.",3],["أعوذ بكلمات الله التامات من شر ما خلق.",3]],
+ after:[["أستغفر الله.",3],["اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام.",1],["سبحان الله.",33],["الحمد لله.",33],["الله أكبر.",34]]
+};
+let activeDhikrTab="morning",prayerTimer=null;
+function prayerDayRecord(day=todayISO()){if(!data.prayer.records[day])data.prayer.records[day]={};return data.prayer.records[day]}
+function prayerTimesFor(date=new Date()){
+ const lat=Number(data.prayer.lat),lon=Number(data.prayer.lon),tz=Number(data.prayer.tz);
+ if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)return null;
+ const rad=Math.PI/180,deg=180/Math.PI;
+ const start=new Date(date.getFullYear(),0,0),n=Math.floor((date-start)/86400000);
+ const g=2*Math.PI/365*(n-1),eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+ const dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+ const solarNoon=12+tz-lon/15-eq/60;
+ const hourAngle=alt=>{const c=(Math.sin(alt*rad)-Math.sin(lat*rad)*Math.sin(dec))/(Math.cos(lat*rad)*Math.cos(dec));return Math.acos(Math.max(-1,Math.min(1,c)))*deg/15};
+ const fajr=solarNoon-hourAngle(-19.5),sunrise=solarNoon-hourAngle(-0.833),sunset=solarNoon+hourAngle(-0.833),isha=solarNoon+hourAngle(-17.5);
+ const asrAlt=Math.atan(1/(1+Math.tan(Math.abs(lat*rad-dec))))*deg;
+ const asr=solarNoon+hourAngle(asrAlt);
+ const vals=[fajr,solarNoon,asr,sunset,isha];
+ return vals.map(v=>{let mins=Math.round(v*60);mins=(mins+1440)%1440;return `${String(Math.floor(mins/60)).padStart(2,"0")}:${String(mins%60).padStart(2,"0")}`});
+}
+function prayerMinutes(str){const [h,m]=str.split(":").map(Number);return h*60+m}
+function renderPrayer(){
+ const times=prayerTimesFor();if(!times)return;
+ const now=new Date(),nowM=now.getHours()*60+now.getMinutes(),record=prayerDayRecord();
+ const grid=$("prayerTimesGrid");if(!grid)return;
+ let next=times.findIndex(t=>prayerMinutes(t)>nowM);if(next<0)next=0;
+ $("nextPrayerName").textContent=PRAYER_NAMES[next];$("prayerDateLabel").textContent=now.toLocaleDateString(data.settings.language==="ar"?"ar-EG":"en-US",{weekday:"long",day:"numeric",month:"long"});
+ $("prayerCityLabel").textContent=data.prayer.city||"—";
+ grid.innerHTML=times.map((time,i)=>`<div class="prayer-time-card ${i===next?"next":""}"><strong>${PRAYER_NAMES[i]}</strong><span>${time}</span></div>`).join("");
+ const done=PRAYER_NAMES.filter(n=>record[n]).length,percent=Math.round(done/5*100);
+ $("prayerProgressBar").style.width=percent+"%";$("prayerDoneLabel").textContent=`${done} من 5 صلوات`;$("prayerPercent").textContent=percent+"%";
+ $("prayerCheckGrid").innerHTML=PRAYER_NAMES.map((n,i)=>`<div class="prayer-check ${record[n]?"done":""}"><span>${n}</span><button data-prayer-toggle="${n}">${record[n]?"✓ تمت":"تحديد"}</button></div>`).join("");
+ const hist=$("prayerHistory");hist.innerHTML=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-i);const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`,r=data.prayer.records[key]||{},count=PRAYER_NAMES.filter(n=>r[n]).length;return `<div class="history-row"><span>${i===0?"اليوم":d.toLocaleDateString("ar-EG",{day:"numeric",month:"short"})}</span><div class="history-dots">${PRAYER_NAMES.map(n=>`<i class="${r[n]?"on":""}" title="${n}"></i>`).join("")}</div><strong>${count}/5</strong></div>`}).join("");
+ const target=new Date();let targetM=prayerMinutes(times[next]);if(next===0&&nowM>=prayerMinutes(times[4]))target.setDate(target.getDate()+1);
+ target.setHours(Math.floor(targetM/60),targetM%60,0,0);
+ const diff=Math.max(0,target-new Date()),hh=Math.floor(diff/3600000),mm=Math.floor(diff%3600000/60000),ss=Math.floor(diff%60000/1000);
+ $("prayerCountdown").textContent=[hh,mm,ss].map(v=>String(v).padStart(2,"0")).join(":");
+ ["prayerCity","prayerLat","prayerLon","prayerTZ"].forEach((id,i)=>{const el=$(id),key=["city","lat","lon","tz"][i];if(el&&document.activeElement!==el)el.value=data.prayer[key]});
+}
+function renderDhikr(){
+ const list=$("dhikrList");if(!list)return;const items=DHIKR_DATA[activeDhikrTab];
+ list.innerHTML=items.map((item,i)=>{const count=(data.prayer.dhikr[activeDhikrTab]||{})[i]||0;return `<div class="dhikr-item"><p>${item[0]} <small>(${item[1]} مرة)</small></p><div class="dhikr-count"><span>${count}</span><button data-dhikr-add="${i}" aria-label="زيادة">+</button></div></div>`}).join("");
+ document.querySelectorAll("[data-dhikr-tab]").forEach(b=>b.classList.toggle("selected",b.dataset.dhikrTab===activeDhikrTab));
+}
+function savePrayerSettings(){const city=$("prayerCity").value.trim()||"طنطا",lat=Number($("prayerLat").value),lon=Number($("prayerLon").value),tz=Number($("prayerTZ").value);if(!Number.isFinite(lat)||Math.abs(lat)>90||!Number.isFinite(lon)||Math.abs(lon)>180||!Number.isFinite(tz)||tz< -12||tz>14){toast("راجع الإحداثيات وفارق التوقيت");return}Object.assign(data.prayer,{city,lat,lon,tz});save();toast("تم حفظ إعدادات مواقيت الصلاة")}
+document.addEventListener("click",e=>{
+ const prayerToggle=e.target.closest("[data-prayer-toggle]");if(prayerToggle){const name=prayerToggle.dataset.prayerToggle,rec=prayerDayRecord();rec[name]=!rec[name];save();return}
+ const dhikrTab=e.target.closest("[data-dhikr-tab]");if(dhikrTab){activeDhikrTab=dhikrTab.dataset.dhikrTab;renderDhikr();return}
+ const dhikrAdd=e.target.closest("[data-dhikr-add]");if(dhikrAdd){const bucket=data.prayer.dhikr[activeDhikrTab]||(data.prayer.dhikr[activeDhikrTab]={}),i=dhikrAdd.dataset.dhikrAdd;bucket[i]=(bucket[i]||0)+1;save();renderDhikr();return}
+ if(e.target.closest("#tasbeehAdd")){data.prayer.tasbeeh=(data.prayer.tasbeeh||0)+1;save();return}
+ if(e.target.closest("#tasbeehReset")){data.prayer.tasbeeh=0;save();return}
+ if(e.target.closest("#savePrayerSettings")){savePrayerSettings();return}
+});
+const oldRenderAll=renderAll;
+renderAll=function(){oldRenderAll();if($("tasbeehCount"))$("tasbeehCount").textContent=String(data.prayer.tasbeeh||0);renderPrayer();renderDhikr()};
+const oldSetPage=setPage;
+setPage=function(page){oldSetPage(page);if(page==="prayer"){renderPrayer();renderDhikr()}};
+if($("tasbeehAdd"))$("tasbeehAdd").addEventListener("click",()=>{$("tasbeehCount").textContent=String(data.prayer.tasbeeh||0)});
+if($("tasbeehReset"))$("tasbeehReset").addEventListener("click",()=>{$("tasbeehCount").textContent="0"});
+$("prayerTimesGrid")&&setInterval(()=>{if(currentPage==="prayer")renderPrayer()},1000);
+renderAll();
+
+</script>
+</body>
+</html>
